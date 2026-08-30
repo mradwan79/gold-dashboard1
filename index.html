@@ -1,0 +1,1135 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gold Investment Portfolio | Private Prestige</title>
+    <!-- استدعاء خطوط Google الفاخرة -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700;800&family=Tajawal:wght@300;400;500;700;800;900&family=Readex+Pro:wght@400;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --bg-deep: #060a12;
+            --bg-gradient: radial-gradient(circle at 50% 0%, #121c33 0%, #060a12 75%);
+            --card-bg: rgba(14, 22, 41, 0.75);
+            --card-hover: rgba(20, 31, 56, 0.85);
+            --gold-light: #F9E79F;
+            --gold-primary: #D4AF37;
+            --gold-dark: #996515;
+            --gold-gradient: linear-gradient(135deg, #FBF0B9 0%, #D4AF37 50%, #996515 100%);
+            --gold-border: rgba(212, 175, 55, 0.28);
+            --cream-text: #FDFBF7;
+            --cream-muted: #B8B2A6;
+            --emerald: #10B981;
+            --emerald-bg: rgba(16, 185, 129, 0.12);
+            --ruby: #F43F5E;
+            --ruby-bg: rgba(244, 63, 94, 0.12);
+            --sapphire: #38BDF8;
+            --border-soft: rgba(255, 255, 255, 0.07);
+        }
+
+        * { box-sizing: border-box; }
+        body {
+            font-family: 'Tajawal', 'Segoe UI', sans-serif;
+            background: var(--bg-deep);
+            background-image: var(--bg-gradient);
+            background-attachment: fixed;
+            color: var(--cream-text);
+            padding: 24px 16px;
+            margin: 0;
+            min-height: 100vh;
+        }
+
+        .container { max-width: 1450px; margin: auto; }
+
+        /* ترويسة الصفحة الفاخرة */
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 20px;
+            margin-bottom: 25px;
+            border-bottom: 1px solid var(--gold-border);
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .brand-title {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .brand-title .logo-icon {
+            font-size: 2rem;
+            filter: drop-shadow(0 0 10px rgba(212, 175, 55, 0.5));
+        }
+        .brand-title h1 {
+            font-family: 'Tajawal', sans-serif;
+            font-weight: 800;
+            font-size: 1.6rem;
+            margin: 0;
+            background: var(--gold-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            letter-spacing: 0.5px;
+        }
+        .brand-title span {
+            font-family: 'Cinzel', serif;
+            font-size: 0.75rem;
+            color: var(--cream-muted);
+            letter-spacing: 2px;
+            display: block;
+        }
+
+        .actions-group { display: flex; gap: 10px; flex-wrap: wrap; }
+
+        /* أزرار ميتاليك فاخرة */
+        .btn {
+            font-family: 'Tajawal', sans-serif;
+            font-weight: 700;
+            font-size: 0.85rem;
+            padding: 9px 16px;
+            border-radius: 8px;
+            border: 1px solid transparent;
+            cursor: pointer;
+            transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .btn-gold {
+            background: var(--gold-gradient);
+            color: #060a12;
+            box-shadow: 0 4px 15px rgba(212, 175, 55, 0.25);
+        }
+        .btn-gold:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(212, 175, 55, 0.45);
+        }
+        .btn-glass {
+            background: rgba(255, 255, 255, 0.05);
+            color: var(--cream-text);
+            border: 1px solid var(--border-soft);
+            backdrop-filter: blur(8px);
+        }
+        .btn-glass:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: var(--gold-primary);
+            transform: translateY(-2px);
+        }
+        .btn-emerald {
+            background: linear-gradient(135deg, #10B981, #047857);
+            color: #fff;
+            box-shadow: 0 4px 12px rgba(16, 185, 129, 0.25);
+        }
+        .btn-emerald:hover { transform: translateY(-2px); box-shadow: 0 6px 16px rgba(16, 185, 129, 0.4); }
+        .btn-danger {
+            background: rgba(244, 63, 94, 0.15);
+            color: #FDA4AF;
+            border: 1px solid rgba(244, 63, 94, 0.3);
+        }
+        .btn-danger:hover { background: var(--ruby); color: #fff; transform: translateY(-2px); }
+
+        .btn-action-sell { background: var(--emerald-bg); color: var(--emerald); border: 1px solid rgba(16, 185, 129, 0.3); padding: 5px 9px; font-size: 0.8rem; border-radius: 5px; }
+        .btn-action-sell:hover { background: var(--emerald); color: #fff; }
+        .btn-action-edit { background: rgba(212, 175, 55, 0.15); color: var(--gold-light); border: 1px solid var(--gold-border); padding: 5px 9px; font-size: 0.8rem; border-radius: 5px; }
+        .btn-action-edit:hover { background: var(--gold-primary); color: #000; }
+        .btn-action-del { background: var(--ruby-bg); color: var(--ruby); border: 1px solid rgba(244, 63, 94, 0.3); padding: 5px 9px; font-size: 0.8rem; border-radius: 5px; }
+        .btn-action-del:hover { background: var(--ruby); color: #fff; }
+
+        /* شبكة الإعدادات والمدخلات */
+        .grid-inputs {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 14px;
+            margin-bottom: 24px;
+        }
+        .luxury-card {
+            background: var(--card-bg);
+            border: 1px solid var(--gold-border);
+            border-radius: 12px;
+            padding: 14px 16px;
+            backdrop-filter: blur(12px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.45);
+            transition: all 0.3s ease;
+        }
+        .luxury-card:hover { border-color: rgba(212, 175, 55, 0.6); }
+
+        .luxury-card label {
+            display: block;
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: var(--cream-muted);
+            margin-bottom: 6px;
+        }
+        .luxury-card input[type="number"] {
+            width: 100%;
+            background: rgba(6, 10, 18, 0.7);
+            border: 1px solid var(--border-soft);
+            color: var(--gold-light);
+            font-family: 'Readex Pro', sans-serif;
+            font-weight: 600;
+            padding: 9px 12px;
+            border-radius: 6px;
+            font-size: 1rem;
+            transition: 0.2s;
+        }
+        .luxury-card input[type="number"]:focus {
+            outline: none;
+            border-color: var(--gold-primary);
+            box-shadow: 0 0 10px rgba(212, 175, 55, 0.3);
+        }
+
+        .color-picker-box {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-top: 8px;
+            padding-top: 8px;
+            border-top: 1px solid var(--border-soft);
+        }
+        .color-picker-box input[type="color"] {
+            border: none;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            cursor: pointer;
+            background: transparent;
+            padding: 0;
+        }
+
+        /* كروت الملخص المالي */
+        .summary-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+            gap: 14px;
+            margin-bottom: 28px;
+        }
+        .metric-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-soft);
+            border-radius: 12px;
+            padding: 16px 18px;
+            position: relative;
+            overflow: hidden;
+            backdrop-filter: blur(12px);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.4);
+            border-right: 3px solid var(--gold-primary);
+        }
+        .metric-card.profit { border-right-color: var(--emerald); }
+        .metric-card.loss { border-right-color: var(--ruby); }
+        .metric-card.sapphire { border-right-color: var(--sapphire); }
+        .metric-card.purple { border-right-color: #A855F7; }
+
+        .metric-card h3 {
+            margin: 0 0 6px 0;
+            font-size: 0.8rem;
+            color: var(--cream-muted);
+            font-weight: 500;
+        }
+        .metric-card p {
+            margin: 0;
+            font-family: 'Readex Pro', sans-serif;
+            font-size: 1.35rem;
+            font-weight: 700;
+            color: var(--cream-text);
+            letter-spacing: -0.5px;
+        }
+
+        /* الصناديق والأقسام */
+        .section-box {
+            background: var(--card-bg);
+            border: 1px solid var(--border-soft);
+            border-radius: 14px;
+            padding: 22px;
+            margin-bottom: 28px;
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4);
+            backdrop-filter: blur(12px);
+        }
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid var(--border-soft);
+            padding-bottom: 14px;
+            margin-bottom: 18px;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .section-header h3 {
+            margin: 0;
+            font-size: 1.2rem;
+            font-weight: 800;
+            color: var(--gold-light);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        /* الجداول الفاخرة */
+        .table-responsive { width: 100%; overflow-x: auto; border-radius: 8px; }
+        table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0 4px;
+            min-width: 980px;
+        }
+        th {
+            background: rgba(18, 28, 51, 0.85);
+            color: var(--cream-muted);
+            font-weight: 700;
+            font-size: 0.85rem;
+            padding: 12px 10px;
+            text-align: center;
+            border: none;
+            letter-spacing: 0.3px;
+        }
+        th:first-child { border-radius: 8px 0 0 8px; }
+        th:last-child { border-radius: 0 8px 8px 0; }
+
+        td {
+            padding: 12px 10px;
+            text-align: center;
+            font-family: 'Readex Pro', sans-serif;
+            font-size: 0.88rem;
+            border: none;
+            color: var(--cream-text);
+        }
+        tbody tr {
+            transition: all 0.2s ease;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+        }
+        tbody tr:hover {
+            filter: brightness(1.15);
+            transform: scale(1.002);
+        }
+
+        .badge-profit { color: var(--emerald); font-weight: 700; text-shadow: 0 0 10px rgba(16, 185, 129, 0.3); }
+        .badge-loss { color: var(--ruby); font-weight: 700; text-shadow: 0 0 10px rgba(244, 63, 94, 0.3); }
+
+        .table-input {
+            width: 60px;
+            background: rgba(6, 10, 18, 0.8);
+            border: 1px solid var(--border-soft);
+            color: var(--gold-light);
+            font-family: 'Readex Pro', sans-serif;
+            padding: 4px;
+            border-radius: 5px;
+            text-align: center;
+            font-size: 0.85rem;
+            font-weight: 700;
+        }
+        .table-input:focus { outline: none; border-color: var(--gold-primary); }
+
+        .bank-badge {
+            padding: 4px 10px;
+            border-radius: 6px;
+            font-family: 'Tajawal', sans-serif;
+            font-weight: 700;
+            font-size: 0.8rem;
+            display: inline-block;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+        }
+
+        /* النوافذ المنبثقة (Modals) */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(4, 7, 13, 0.85);
+            backdrop-filter: blur(8px);
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+        .modal-content {
+            background: #0E1629;
+            border: 1px solid var(--gold-border);
+            padding: 25px;
+            border-radius: 14px;
+            width: 92%;
+            max-width: 460px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8);
+            animation: modalFadeIn 0.3s ease;
+        }
+        @keyframes modalFadeIn {
+            from { opacity: 0; transform: translateY(-15px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .modal-content h3 {
+            margin-top: 0;
+            font-size: 1.25rem;
+            color: var(--gold-light);
+            border-bottom: 1px solid var(--border-soft);
+            padding-bottom: 10px;
+        }
+        .form-group { margin-bottom: 14px; }
+        .form-group label { display: block; margin-bottom: 5px; color: var(--cream-muted); font-size: 0.85rem; }
+        .form-group input, .form-group select {
+            width: 100%;
+            padding: 9px 12px;
+            background: #060A12;
+            border: 1px solid var(--border-soft);
+            color: var(--cream-text);
+            font-family: 'Readex Pro', sans-serif;
+            border-radius: 6px;
+        }
+        .form-group input:focus, .form-group select:focus {
+            outline: none;
+            border-color: var(--gold-primary);
+            box-shadow: 0 0 8px rgba(212, 175, 55, 0.3);
+        }
+        .modal-actions { display: flex; justify-content: flex-end; gap: 10px; margin-top: 20px; }
+
+        /* التنبيه العائم */
+        .toast {
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
+            background: linear-gradient(135deg, #10B981, #065F46);
+            color: #fff;
+            padding: 12px 22px;
+            border-radius: 8px;
+            font-weight: 700;
+            display: none;
+            z-index: 2000;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.6);
+            border: 1px solid rgba(255,255,255,0.2);
+            font-family: 'Tajawal', sans-serif;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    
+    <!-- الترويسة العليا والبراند -->
+    <div class="header">
+        <div class="brand-title">
+            <span class="logo-icon">⚜️</span>
+            <div>
+                <h1>محفظة السبائك والاستثمار الذهبي</h1>
+                <span>PRESTIGE WEALTH MANAGEMENT</span>
+            </div>
+        </div>
+        <div class="actions-group">
+            <button class="btn btn-gold" onclick="fetchLivePrice()">تحديث السعر الفوري 🔄</button>
+            <button class="btn btn-emerald" onclick="manualSave()">حفظ التغييرات 💾</button>
+            <button class="btn btn-glass" onclick="exportJSON()">تصدير JSON 📤</button>
+            <button class="btn btn-glass" onclick="document.getElementById('importFileInput').click()">استيراد JSON 📥</button>
+            <input type="file" id="importFileInput" style="display:none;" accept=".json" onchange="importJSON(event)">
+            <button class="btn btn-danger" onclick="resetToDefault()">استعادة الافتراضي ⚠️</button>
+        </div>
+    </div>
+
+    <!-- شبكة الإعدادات والتحكم بالأسعار والألوان -->
+    <div class="grid-inputs">
+        <div class="luxury-card">
+            <label>سعر أونصة الذهب (USD)</label>
+            <input type="number" id="ouncePrice" value="4455.02" step="0.01" oninput="calculateAll()">
+        </div>
+        <div class="luxury-card">
+            <label>سعر صرف الدولار (SAR)</label>
+            <input type="number" id="usdToSar" value="3.75" step="0.01" oninput="calculateAll()">
+        </div>
+        <div class="luxury-card">
+            <label>سبريد ولون بنك الراجحي (%)</label>
+            <input type="number" id="spreadRajhi" value="2.0" step="0.1" oninput="onGlobalBankSpreadChange('الراجحي', this.value)">
+            <div class="color-picker-box">
+                <input type="color" id="colorRajhi" value="#1A365D" onchange="onBankColorChange()">
+                <span style="font-size:0.75rem; color:var(--cream-muted)">طابع الراجحي الفاخر</span>
+            </div>
+        </div>
+        <div class="luxury-card">
+            <label>سبريد ولون البنك الأهلي (%)</label>
+            <input type="number" id="spreadAhli" value="2.0" step="0.1" oninput="onGlobalBankSpreadChange('الأهلي', this.value)">
+            <div class="color-picker-box">
+                <input type="color" id="colorAhli" value="#064E3B" onchange="onBankColorChange()">
+                <span style="font-size:0.75rem; color:var(--cream-muted)">طابع الأهلي الفاخر</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- كروت الملخص المالي التنفيذي -->
+    <div class="summary-grid">
+        <div class="metric-card">
+            <h3>سعر جرام الذهب الصافي (Spot)</h3>
+            <p id="spotGramPrice" style="color:var(--gold-light);">0.00 ر.س</p>
+        </div>
+        <div class="metric-card sapphire">
+            <h3>إجمالي رصيد الذهب الحالي</h3>
+            <p id="totalWeight">0.00 جم</p>
+        </div>
+        <div class="metric-card">
+            <h3>رأس المال المستثمر حالياً</h3>
+            <p id="totalInvested">0.00 ر.س</p>
+        </div>
+        <div class="metric-card" id="unrealizedCard">
+            <h3>صافي الربح التقديري (الحالي)</h3>
+            <p id="totalUnrealizedPnL">0.00 ر.س</p>
+        </div>
+        <div class="metric-card purple" id="realizedCard">
+            <h3>الأرباح المحققة (المبيعات)</h3>
+            <p id="totalRealizedPnL">0.00 ر.س</p>
+        </div>
+    </div>
+
+    <!-- 1. ملخص البنوك الفاخر -->
+    <div class="section-box">
+        <div class="section-header">
+            <h3>🏦 ملخص المراكز المالية حسب البنك</h3>
+        </div>
+        <div class="table-responsive">
+            <table>
+                <thead>
+                    <tr>
+                        <th>البنك المعتمد</th>
+                        <th>الوزن الإجمالي</th>
+                        <th>رأس المال المستثمر</th>
+                        <th>القيمة الصافية الحالية</th>
+                        <th>الربح / الخسارة</th>
+                        <th>نسبة العائد الصافي</th>
+                    </tr>
+                </thead>
+                <tbody id="bankSummaryTable"></tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- 2. جدول الصفقات الحالية -->
+    <div class="section-box">
+        <div class="section-header">
+            <h3>🟡 الصفقات الحالية (المحافظ المفتوحة)</h3>
+            <button class="btn btn-gold" onclick="openDealModal()">+ إضافة صفقة شراء جديدة</button>
+        </div>
+        <div class="table-responsive">
+            <table>
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>البنك</th>
+                        <th>الوزن (جم)</th>
+                        <th>تكلفة الشراء</th>
+                        <th>شراء / جرام</th>
+                        <th>السبريد</th>
+                        <th>صافي بيع / جرام</th>
+                        <th>القيمة الصافية الحالية</th>
+                        <th>الربح / الخسارة</th>
+                        <th>نسبة الربح %</th>
+                        <th>أونصة التعادل</th>
+                        <th>إجراءات الصفقة</th>
+                    </tr>
+                </thead>
+                <tbody id="activeDealsTable"></tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- 3. سجل الصفقات المنتهية -->
+    <div class="section-box">
+        <div class="section-header">
+            <h3>🟢 سجل الصفقات المنتهية (الأرباح المحققة)</h3>
+            <button class="btn btn-emerald" onclick="openClosedDealModal()">+ إضافة صفقة منتهية يدوياً</button>
+        </div>
+        
+        <!-- بطاقات ملخص الصفقات المنتهية -->
+        <div class="summary-grid" style="margin-bottom: 16px;">
+            <div class="metric-card">
+                <h3>إجمالي الذهب المباع</h3>
+                <p id="closedTotalWeight">0.00 جم</p>
+            </div>
+            <div class="metric-card">
+                <h3>رأس المال المسترجع</h3>
+                <p id="closedTotalBuy">0.00 ر.س</p>
+            </div>
+            <div class="metric-card">
+                <h3>إجمالي السيولة المستلمة</h3>
+                <p id="closedTotalSell">0.00 ر.س</p>
+            </div>
+            <div class="metric-card profit" id="closedPnLCard">
+                <h3>صافي الأرباح المحققة والعائد</h3>
+                <p id="closedNetPnL">0.00 ر.س (0.00%)</p>
+            </div>
+        </div>
+
+        <div class="table-responsive">
+            <table>
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>البنك</th>
+                        <th>الوزن المباع (جم)</th>
+                        <th>إجمالي سعر الشراء</th>
+                        <th>إجمالي سعر البيع الفعلي</th>
+                        <th>الربح المحقق</th>
+                        <th>العائد الصافي %</th>
+                        <th>تاريخ التنفيذ</th>
+                        <th>إجراءات</th>
+                    </tr>
+                </thead>
+                <tbody id="closedDealsTable"></tbody>
+            </table>
+        </div>
+    </div>
+
+</div>
+
+<!-- Modal: إضافة/تعديل صفقة حالية -->
+<div id="dealModal" class="modal">
+    <div class="modal-content">
+        <h3 id="modalTitle">إضافة صفقة شراء</h3>
+        <input type="hidden" id="dealIndex">
+        <div class="form-group">
+            <label>البنك المعتمد</label>
+            <select id="dealBank" onchange="onModalBankChange()">
+                <option value="الراجحي">بنك الراجحي</option>
+                <option value="الأهلي">البنك الأهلي</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label>الوزن (بالجرام)</label>
+            <input type="number" id="dealWeight" step="0.01">
+        </div>
+        <div class="form-group">
+            <label>إجمالي تكلفة الشراء (ر.س)</label>
+            <input type="number" id="dealBuyTotal" step="0.01">
+        </div>
+        <div class="form-group">
+            <label>نسبة السبريد المخصصة للصفقة (%)</label>
+            <input type="number" id="dealSpread" step="0.1">
+        </div>
+        <div class="modal-actions">
+            <button class="btn btn-glass" onclick="closeModal('dealModal')">إلغاء</button>
+            <button class="btn btn-gold" onclick="saveActiveDeal()">حفظ الصفقة</button>
+        </div>
+    </div>
+</div>
+
+<!-- Modal: تنفيذ البيع -->
+<div id="sellModal" class="modal">
+    <div class="modal-content">
+        <h3 style="color:var(--emerald);">💰 تأكيد تنفيذ بيع الصفقة</h3>
+        <input type="hidden" id="sellDealIndex">
+        <div class="luxury-card" style="margin-bottom: 14px; background:#060A12;">
+            <p style="margin: 4px 0; font-size:0.9rem;" id="sellModalInfo"></p>
+        </div>
+        <div class="form-group">
+            <label>إجمالي مبلغ البيع الفعلي المستلم (ر.س)</label>
+            <input type="number" id="sellActualTotal" step="0.01">
+            <small style="color:var(--cream-muted); font-size:0.75rem;">تم احتساب القيمة الصافية بعد السبريد تلقائياً، يمكنك كتابة المبلغ الدقيق المستلم.</small>
+        </div>
+        <div class="modal-actions">
+            <button class="btn btn-glass" onclick="closeModal('sellModal')">إلغاء</button>
+            <button class="btn btn-emerald" onclick="confirmSellDeal()">تأكيد ونقل للأرشيف ✅</button>
+        </div>
+    </div>
+</div>
+
+<!-- Modal: إضافة/تعديل صفقة منتهية يدوياً -->
+<div id="closedModal" class="modal">
+    <div class="modal-content">
+        <h3 id="closedModalTitle">إضافة صفقة منتهية</h3>
+        <input type="hidden" id="closedDealIndex">
+        <div class="form-group">
+            <label>البنك</label>
+            <select id="closedDealBank">
+                <option value="الراجحي">بنك الراجحي</option>
+                <option value="الأهلي">البنك الأهلي</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label>الوزن (جرام)</label>
+            <input type="number" id="closedDealWeight" step="0.01">
+        </div>
+        <div class="form-group">
+            <label>إجمالي سعر الشراء (ر.س)</label>
+            <input type="number" id="closedDealBuyTotal" step="0.01">
+        </div>
+        <div class="form-group">
+            <label>إجمالي سعر البيع (ر.س)</label>
+            <input type="number" id="closedDealSellTotal" step="0.01">
+        </div>
+        <div class="form-group">
+            <label>تاريخ الإغلاق</label>
+            <input type="date" id="closedDealDate">
+        </div>
+        <div class="modal-actions">
+            <button class="btn btn-glass" onclick="closeModal('closedModal')">إلغاء</button>
+            <button class="btn btn-emerald" onclick="saveClosedDeal()">حفظ</button>
+        </div>
+    </div>
+</div>
+
+<div id="toast" class="toast">تم الحفظ بنجاح! ✔️</div>
+
+<script>
+    const OUNCE_TO_GRAM = 31.1034768;
+
+    // دالة تنسيق الأرقام القياسية بالفواصل
+    function fmt(val, decimals = 2) {
+        const num = parseFloat(val);
+        if (isNaN(num)) return "0.00";
+        return num.toLocaleString('en-US', {
+            minimumFractionDigits: decimals,
+            maximumFractionDigits: decimals
+        });
+    }
+
+    // توليد لون خلفية شبه شفاف فاخر
+    function hexToRgba(hex, alpha = 0.22) {
+        hex = hex.replace('#', '');
+        if (hex.length === 3) hex = hex.split('').map(c => c + c).join('');
+        const r = parseInt(hex.substring(0, 2), 16) || 0;
+        const g = parseInt(hex.substring(2, 4), 16) || 0;
+        const b = parseInt(hex.substring(4, 6), 16) || 0;
+        return `rgba(${r}, ${g}, ${b}, ${alpha})`;
+    }
+
+    // الصفقات الافتراضية الأولية
+    const defaultActiveDeals = [
+        { bank: "الراجحي", weight: 20, buyTotal: 11969, spread: 2.0 },
+        { bank: "الأهلي",  weight: 20, buyTotal: 11818, spread: 2.0 },
+        { bank: "الراجحي", weight: 50, buyTotal: 26748, spread: 2.0 },
+        { bank: "الراجحي", weight: 50, buyTotal: 27420, spread: 2.0 },
+        { bank: "الأهلي",  weight: 30, buyTotal: 15191, spread: 2.0 }
+    ];
+
+    const defaultClosedDeals = [];
+
+    let activeDeals = JSON.parse(localStorage.getItem('gold_active_deals')) || defaultActiveDeals;
+    let closedDeals = JSON.parse(localStorage.getItem('gold_closed_deals')) || defaultClosedDeals;
+    
+    // استعادة الإعدادات
+    const savedSettings = JSON.parse(localStorage.getItem('gold_settings'));
+    if (savedSettings) {
+        document.getElementById('ouncePrice').value = savedSettings.ouncePrice ?? 4455.02;
+        document.getElementById('usdToSar').value = savedSettings.usdSar ?? 3.75;
+        document.getElementById('spreadRajhi').value = savedSettings.spreadRajhi ?? 2.0;
+        document.getElementById('spreadAhli').value = savedSettings.spreadAhli ?? 2.0;
+        document.getElementById('colorRajhi').value = savedSettings.colorRajhi ?? '#1A365D';
+        document.getElementById('colorAhli').value = savedSettings.colorAhli ?? '#064E3B';
+    }
+
+    function autoSave() {
+        localStorage.setItem('gold_active_deals', JSON.stringify(activeDeals));
+        localStorage.setItem('gold_closed_deals', JSON.stringify(closedDeals));
+        
+        const settings = {
+            ouncePrice: parseFloat(document.getElementById('ouncePrice').value),
+            usdSar: parseFloat(document.getElementById('usdToSar').value),
+            spreadRajhi: parseFloat(document.getElementById('spreadRajhi').value),
+            spreadAhli: parseFloat(document.getElementById('spreadAhli').value),
+            colorRajhi: document.getElementById('colorRajhi').value,
+            colorAhli: document.getElementById('colorAhli').value
+        };
+        localStorage.setItem('gold_settings', JSON.stringify(settings));
+    }
+
+    function showToast(msg = "تم الحفظ بنجاح! ✔️") {
+        const toast = document.getElementById('toast');
+        toast.innerText = msg;
+        toast.style.display = 'block';
+        setTimeout(() => { toast.style.display = 'none'; }, 2400);
+    }
+
+    function manualSave() {
+        autoSave();
+        showToast("تم حفظ كافة التغييرات وإعدادات المحفظة بنجاح! 💾");
+    }
+
+    async function fetchLivePrice() {
+        try {
+            const res = await fetch('https://api.gold-api.com/price/XAU');
+            const data = await res.json();
+            if (data && data.price) {
+                document.getElementById('ouncePrice').value = data.price.toFixed(2);
+                calculateAll();
+                showToast("تم تحديث سعر أونصة الذهب الفوري! 🔄");
+            }
+        } catch (e) {
+            alert("تعذر جلب السعر اللحظي، يرجى كتابة سعر الأونصة يدوياً.");
+        }
+    }
+
+    function onGlobalBankSpreadChange(bankName, newSpreadVal) {
+        const spread = parseFloat(newSpreadVal) || 0;
+        activeDeals.forEach(deal => {
+            if (deal.bank === bankName) {
+                deal.spread = spread;
+            }
+        });
+        calculateAll();
+    }
+
+    function updateRowSpread(index, newSpread) {
+        activeDeals[index].spread = parseFloat(newSpread) || 0;
+        calculateAll();
+    }
+
+    function onBankColorChange() { calculateAll(); }
+
+    function onModalBankChange() {
+        const bank = document.getElementById('dealBank').value;
+        const defaultSpread = bank === 'الراجحي' ? document.getElementById('spreadRajhi').value : document.getElementById('spreadAhli').value;
+        document.getElementById('dealSpread').value = defaultSpread;
+    }
+
+    function calculateAll() {
+        const ounceUSD = parseFloat(document.getElementById('ouncePrice').value) || 0;
+        const usdSar = parseFloat(document.getElementById('usdToSar').value) || 3.75;
+        const defaultSpreadR = parseFloat(document.getElementById('spreadRajhi').value) || 0;
+        const defaultSpreadA = parseFloat(document.getElementById('spreadAhli').value) || 0;
+
+        const colorRajhi = document.getElementById('colorRajhi').value;
+        const colorAhli = document.getElementById('colorAhli').value;
+
+        const spotGramSAR = (ounceUSD * usdSar) / OUNCE_TO_GRAM;
+        document.getElementById('spotGramPrice').innerText = fmt(spotGramSAR, 2) + " ر.س";
+
+        let totalWeight = 0;
+        let totalInvested = 0;
+        let totalCurrentNetValue = 0;
+
+        let bankStats = {
+            "الراجحي": { weight: 0, invested: 0, netValue: 0, color: colorRajhi },
+            "الأهلي":  { weight: 0, invested: 0, netValue: 0, color: colorAhli }
+        };
+
+        // 1. حساب الصفقات الحالية
+        let activeHtml = "";
+        activeDeals.forEach((deal, idx) => {
+            const currentSpread = deal.spread !== undefined ? deal.spread : (deal.bank === "الراجحي" ? defaultSpreadR : defaultSpreadA);
+            const buyPricePerGram = deal.buyTotal / deal.weight;
+            const netSellPricePerGram = spotGramSAR * (1 - (currentSpread / 100));
+            const currentNetVal = netSellPricePerGram * deal.weight;
+            const pnlSAR = currentNetVal - deal.buyTotal;
+            const pnlPct = (pnlSAR / deal.buyTotal) * 100;
+            const breakEven = (buyPricePerGram / (1 - (currentSpread / 100))) * OUNCE_TO_GRAM / usdSar;
+
+            totalWeight += deal.weight;
+            totalInvested += deal.buyTotal;
+            totalCurrentNetValue += currentNetVal;
+
+            if (bankStats[deal.bank]) {
+                bankStats[deal.bank].weight += deal.weight;
+                bankStats[deal.bank].invested += deal.buyTotal;
+                bankStats[deal.bank].netValue += currentNetVal;
+            }
+
+            const bankColor = deal.bank === "الراجحي" ? colorRajhi : colorAhli;
+            const rowBg = hexToRgba(bankColor, 0.28);
+            const pnlClass = pnlSAR >= 0 ? 'badge-profit' : 'badge-loss';
+
+            activeHtml += `
+                <tr style="background: ${rowBg}; border-right: 4px solid ${bankColor};">
+                    <td>${idx + 1}</td>
+                    <td><span class="bank-badge" style="background: ${bankColor}; color: #fff; border: 1px solid rgba(255,255,255,0.2);">${deal.bank}</span></td>
+                    <td><strong style="color:var(--cream-text);">${fmt(deal.weight, 2)}</strong></td>
+                    <td><strong>${fmt(deal.buyTotal, 2)}</strong> <span style="font-size:0.75rem; color:var(--cream-muted)">ر.س</span></td>
+                    <td>${fmt(buyPricePerGram, 2)}</td>
+                    <td>
+                        <input type="number" step="0.1" class="table-input" value="${currentSpread}" onchange="updateRowSpread(${idx}, this.value)"> %
+                    </td>
+                    <td>${fmt(netSellPricePerGram, 2)}</td>
+                    <td><strong style="color:var(--gold-light);">${fmt(currentNetVal, 2)}</strong> <span style="font-size:0.75rem; color:var(--cream-muted)">ر.س</span></td>
+                    <td class="${pnlClass}">${pnlSAR > 0 ? '+' : ''}${fmt(pnlSAR, 2)} ر.س</td>
+                    <td class="${pnlClass}">${pnlPct > 0 ? '+' : ''}${fmt(pnlPct, 2)}%</td>
+                    <td><strong style="color:var(--gold-primary);">$${fmt(breakEven, 2)}</strong></td>
+                    <td style="white-space:nowrap;">
+                        <button class="btn btn-action-sell" onclick="openSellModal(${idx}, ${currentNetVal})">تم البيع 💰</button>
+                        <button class="btn btn-action-edit" onclick="editActiveDeal(${idx})">تعديل</button>
+                        <button class="btn btn-action-del" onclick="deleteActiveDeal(${idx})">حذف</button>
+                    </td>
+                </tr>
+            `;
+        });
+        document.getElementById('activeDealsTable').innerHTML = activeHtml || `<tr><td colspan="12" style="padding:25px; color:var(--cream-muted)">لا توجد صفقات حالية مفتوحة</td></tr>`;
+
+        // 2. تعبئة ملخص البنوك
+        let bankHtml = "";
+        for (let b in bankStats) {
+            const bInvest = bankStats[b].invested;
+            const bNet = bankStats[b].netValue;
+            const bPnL = bNet - bInvest;
+            const bPnLPct = bInvest > 0 ? (bPnL / bInvest) * 100 : 0;
+            const pClass = bPnL >= 0 ? 'badge-profit' : 'badge-loss';
+            const bColor = bankStats[b].color;
+
+            bankHtml += `
+                <tr style="background: ${hexToRgba(bColor, 0.3)}; border-right: 4px solid ${bColor};">
+                    <td><span class="bank-badge" style="background: ${bColor}; color: #fff;">${b}</span></td>
+                    <td><strong>${fmt(bankStats[b].weight, 2)} جم</strong></td>
+                    <td>${fmt(bInvest, 2)} ر.س</td>
+                    <td><strong style="color:var(--gold-light);">${fmt(bNet, 2)} ر.س</strong></td>
+                    <td class="${pClass}">${bPnL > 0 ? '+' : ''}${fmt(bPnL, 2)} ر.س</td>
+                    <td class="${pClass}">${bPnLPct > 0 ? '+' : ''}${fmt(bPnLPct, 2)}%</td>
+                </tr>
+            `;
+        }
+        document.getElementById('bankSummaryTable').innerHTML = bankHtml;
+
+        // 3. حساب الصفقات المنتهية
+        let closedHtml = "";
+        let closedWeight = 0, closedBuy = 0, closedSell = 0;
+
+        closedDeals.forEach((deal, idx) => {
+            const pnl = deal.sellTotal - deal.buyTotal;
+            const pnlPct = (pnl / deal.buyTotal) * 100;
+            
+            closedWeight += deal.weight;
+            closedBuy += deal.buyTotal;
+            closedSell += deal.sellTotal;
+
+            const bankColor = deal.bank === "الراجحي" ? colorRajhi : colorAhli;
+            const pClass = pnl >= 0 ? 'badge-profit' : 'badge-loss';
+
+            closedHtml += `
+                <tr style="background: ${hexToRgba(bankColor, 0.16)}; border-right: 4px solid ${bankColor};">
+                    <td>${idx + 1}</td>
+                    <td><span class="bank-badge" style="background: ${bankColor}; color: #fff;">${deal.bank}</span></td>
+                    <td>${fmt(deal.weight, 2)}</td>
+                    <td>${fmt(deal.buyTotal, 2)} ر.س</td>
+                    <td><strong style="color:var(--gold-light);">${fmt(deal.sellTotal, 2)} ر.س</strong></td>
+                    <td class="${pClass}">${pnl > 0 ? '+' : ''}${fmt(pnl, 2)} ر.س</td>
+                    <td class="${pClass}">${pnlPct > 0 ? '+' : ''}${fmt(pnlPct, 2)}%</td>
+                    <td>${deal.closedDate || '---'}</td>
+                    <td>
+                        <button class="btn btn-action-edit" onclick="editClosedDeal(${idx})">تعديل</button>
+                        <button class="btn btn-action-del" onclick="deleteClosedDeal(${idx})">حذف</button>
+                    </td>
+                </tr>
+            `;
+        });
+        document.getElementById('closedDealsTable').innerHTML = closedHtml || `<tr><td colspan="9" style="padding:25px; color:var(--cream-muted)">لا توجد صفقات منتهية مسجلة</td></tr>`;
+
+        // كروت إحصائيات الصفقات المنتهية
+        const netClosedPnL = closedSell - closedBuy;
+        const netClosedPct = closedBuy > 0 ? (netClosedPnL / closedBuy) * 100 : 0;
+        document.getElementById('closedTotalWeight').innerText = fmt(closedWeight, 2) + " جم";
+        document.getElementById('closedTotalBuy').innerText = fmt(closedBuy, 2) + " ر.س";
+        document.getElementById('closedTotalSell').innerText = fmt(closedSell, 2) + " ر.س";
+        
+        const closedPnLElem = document.getElementById('closedNetPnL');
+        closedPnLElem.innerText = `${netClosedPnL > 0 ? '+' : ''}${fmt(netClosedPnL, 2)} ر.س (${fmt(netClosedPct, 2)}%)`;
+        closedPnLElem.className = netClosedPnL >= 0 ? 'badge-profit' : 'badge-loss';
+        document.getElementById('closedPnLCard').className = `metric-card ${netClosedPnL >= 0 ? 'profit' : 'loss'}`;
+
+        // الكروت الإجمالية الرئيسية
+        document.getElementById('totalWeight').innerText = fmt(totalWeight, 2) + " جم";
+        document.getElementById('totalInvested').innerText = fmt(totalInvested, 2) + " ر.س";
+
+        const totalUnrealizedPnL = totalCurrentNetValue - totalInvested;
+        const totalUnrealizedPct = totalInvested > 0 ? (totalUnrealizedPnL / totalInvested) * 100 : 0;
+        
+        const unCard = document.getElementById('unrealizedCard');
+        const unElem = document.getElementById('totalUnrealizedPnL');
+        unElem.innerText = `${totalUnrealizedPnL > 0 ? '+' : ''}${fmt(totalUnrealizedPnL, 2)} ر.س (${fmt(totalUnrealizedPct, 2)}%)`;
+        unElem.className = totalUnrealizedPnL >= 0 ? 'badge-profit' : 'badge-loss';
+        unCard.className = `metric-card ${totalUnrealizedPnL >= 0 ? 'profit' : 'loss'}`;
+
+        document.getElementById('totalRealizedPnL').innerText = `${netClosedPnL > 0 ? '+' : ''}${fmt(netClosedPnL, 2)} ر.س`;
+
+        autoSave();
+    }
+
+    function openDealModal(idx = null) {
+        document.getElementById('dealIndex').value = idx !== null ? idx : '';
+        document.getElementById('modalTitle').innerText = idx !== null ? 'تعديل الصفقة الحالية' : 'إضافة صفقة شراء جديدة';
+        if (idx !== null) {
+            document.getElementById('dealBank').value = activeDeals[idx].bank;
+            document.getElementById('dealWeight').value = activeDeals[idx].weight;
+            document.getElementById('dealBuyTotal').value = activeDeals[idx].buyTotal;
+            document.getElementById('dealSpread').value = activeDeals[idx].spread ?? 2.0;
+        } else {
+            document.getElementById('dealWeight').value = '';
+            document.getElementById('dealBuyTotal').value = '';
+            onModalBankChange();
+        }
+        document.getElementById('dealModal').style.display = 'flex';
+    }
+
+    function saveActiveDeal() {
+        const idx = document.getElementById('dealIndex').value;
+        const bank = document.getElementById('dealBank').value;
+        const weight = parseFloat(document.getElementById('dealWeight').value);
+        const buyTotal = parseFloat(document.getElementById('dealBuyTotal').value);
+        const spreadVal = document.getElementById('dealSpread').value;
+        const spread = spreadVal !== "" ? parseFloat(spreadVal) : (bank === "الراجحي" ? parseFloat(document.getElementById('spreadRajhi').value) : parseFloat(document.getElementById('spreadAhli').value));
+
+        if (!weight || !buyTotal) { alert('يرجى التحقق من صحة الوزن وتكلفة الشراء'); return; }
+
+        if (idx !== '') {
+            activeDeals[idx] = { bank, weight, buyTotal, spread };
+        } else {
+            activeDeals.push({ bank, weight, buyTotal, spread });
+        }
+
+        closeModal('dealModal');
+        calculateAll();
+        showToast("تم حفظ وتحديث الصفقة بنجاح! ✔️");
+    }
+
+    function editActiveDeal(idx) { openDealModal(idx); }
+
+    function deleteActiveDeal(idx) {
+        if (confirm("هل أنت متأكد من حذف هذه الصفقة من المحفظة؟")) {
+            activeDeals.splice(idx, 1);
+            calculateAll();
+            showToast("تم حذف الصفقة");
+        }
+    }
+
+    function openSellModal(idx, estimatedNet) {
+        const deal = activeDeals[idx];
+        document.getElementById('sellDealIndex').value = idx;
+        document.getElementById('sellModalInfo').innerHTML = `
+            <strong>البنك:</strong> ${deal.bank} | <strong>الوزن:</strong> ${fmt(deal.weight, 2)} جم<br>
+            <strong>تكلفة الشراء:</strong> ${fmt(deal.buyTotal, 2)} ر.س
+        `;
+        document.getElementById('sellActualTotal').value = estimatedNet.toFixed(2);
+        document.getElementById('sellModal').style.display = 'flex';
+    }
+
+    function confirmSellDeal() {
+        const idx = document.getElementById('sellDealIndex').value;
+        const sellTotal = parseFloat(document.getElementById('sellActualTotal').value);
+
+        if (!sellTotal) { alert('يرجى تحديد إجمالي مبلغ البيع المستلم'); return; }
+
+        const deal = activeDeals[idx];
+        const today = new Date().toISOString().split('T')[0];
+
+        closedDeals.push({
+            bank: deal.bank,
+            weight: deal.weight,
+            buyTotal: deal.buyTotal,
+            sellTotal: sellTotal,
+            closedDate: today
+        });
+
+        activeDeals.splice(idx, 1);
+
+        closeModal('sellModal');
+        calculateAll();
+        showToast("تم تنفيذ البيع ونقل الصفقة للأرشيف بنجاح! 💰");
+    }
+
+    function openClosedDealModal(idx = null) {
+        document.getElementById('closedDealIndex').value = idx !== null ? idx : '';
+        document.getElementById('closedModalTitle').innerText = idx !== null ? 'تعديل الصفقة المنتهية' : 'إضافة صفقة منتهية';
+        if (idx !== null) {
+            document.getElementById('closedDealBank').value = closedDeals[idx].bank;
+            document.getElementById('closedDealWeight').value = closedDeals[idx].weight;
+            document.getElementById('closedDealBuyTotal').value = closedDeals[idx].buyTotal;
+            document.getElementById('closedDealSellTotal').value = closedDeals[idx].sellTotal;
+            document.getElementById('closedDealDate').value = closedDeals[idx].closedDate || '';
+        } else {
+            document.getElementById('closedDealWeight').value = '';
+            document.getElementById('closedDealBuyTotal').value = '';
+            document.getElementById('closedDealSellTotal').value = '';
+            document.getElementById('closedDealDate').value = new Date().toISOString().split('T')[0];
+        }
+        document.getElementById('closedModal').style.display = 'flex';
+    }
+
+    function saveClosedDeal() {
+        const idx = document.getElementById('closedDealIndex').value;
+        const bank = document.getElementById('closedDealBank').value;
+        const weight = parseFloat(document.getElementById('closedDealWeight').value);
+        const buyTotal = parseFloat(document.getElementById('closedDealBuyTotal').value);
+        const sellTotal = parseFloat(document.getElementById('closedDealSellTotal').value);
+        const closedDate = document.getElementById('closedDealDate').value;
+
+        if (!weight || !buyTotal || !sellTotal) { alert('يرجى استكمال الحقول المطلوبة'); return; }
+
+        if (idx !== '') {
+            closedDeals[idx] = { bank, weight, buyTotal, sellTotal, closedDate };
+        } else {
+            closedDeals.push({ bank, weight, buyTotal, sellTotal, closedDate });
+        }
+
+        closeModal('closedModal');
+        calculateAll();
+        showToast("تم تحديث سجل المبيعات بنجاح! ✔️");
+    }
+
+    function editClosedDeal(idx) { openClosedDealModal(idx); }
+
+    function deleteClosedDeal(idx) {
+        if (confirm("هل تريد حذف هذه الصفقة من سجل المبيعات؟")) {
+            closedDeals.splice(idx, 1);
+            calculateAll();
+            showToast("تم الحذف");
+        }
+    }
+
+    function closeModal(id) { document.getElementById(id).style.display = 'none'; }
+
+    function exportJSON() {
+        const exportData = {
+            activeDeals,
+            closedDeals,
+            settings: {
+                ouncePrice: parseFloat(document.getElementById('ouncePrice').value),
+                usdSar: parseFloat(document.getElementById('usdToSar').value),
+                spreadRajhi: parseFloat(document.getElementById('spreadRajhi').value),
+                spreadAhli: parseFloat(document.getElementById('spreadAhli').value),
+                colorRajhi: document.getElementById('colorRajhi').value,
+                colorAhli: document.getElementById('colorAhli').value
+            },
+            exportDate: new Date().toISOString()
+        };
+
+        const blob = new Blob([JSON.stringify(exportData, null, 2)], { type: "application/json" });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = `Prestige_Gold_Portfolio_${new Date().toISOString().split('T')[0]}.json`;
+        a.click();
+        URL.revokeObjectURL(url);
+    }
+
+    function importJSON(event) {
+        const file = event.target.files[0];
+        if (!file) return;
+
+        const reader = new FileReader();
+        reader.onload = function(e) {
+            try {
+                const data = JSON.parse(e.target.result);
+                if (data.activeDeals) activeDeals = data.activeDeals;
+                if (data.closedDeals) closedDeals = data.closedDeals;
+                if (data.settings) {
+                    document.getElementById('ouncePrice').value = data.settings.ouncePrice ?? 4455.02;
+                    document.getElementById('usdToSar').value = data.settings.usdSar ?? 3.75;
+                    document.getElementById('spreadRajhi').value = data.settings.spreadRajhi ?? 2.0;
+                    document.getElementById('spreadAhli').value = data.settings.spreadAhli ?? 2.0;
+                    document.getElementById('colorRajhi').value = data.settings.colorRajhi ?? '#1A365D';
+                    document.getElementById('colorAhli').value = data.settings.colorAhli ?? '#064E3B';
+                }
+                calculateAll();
+                showToast("تم استيراد المحفظة بنجاح تام! 📥");
+            } catch (err) {
+                alert("الملف غير صالح.");
+            }
+        };
+        reader.readAsText(file);
+        event.target.value = '';
+    }
+
+    function resetToDefault() {
+        if(confirm("هل أنت متأكد من استعادة المحفظة الافتراضية؟")) {
+            activeDeals = JSON.parse(JSON.stringify(defaultActiveDeals));
+            closedDeals = [];
+            calculateAll();
+            showToast("تمت استعادة الإعدادات الافتراضية");
+        }
+    }
+
+    // البدء الفوري
+    calculateAll();
+</script>
+</body>
+</html>

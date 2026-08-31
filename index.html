@@ -7,7 +7,7 @@
     <!-- استدعاء خطوط Google الفاخرة -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700;800&family=Tajawal:wght@300;400;500;700;800;900&family=Readex+Pro:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700;800&family=Tajawal:wght@300;400;500;700;800;900&family=Readex+Pro:wght@400;600;700;800&display=swap" rel="stylesheet">
     
     <style>
         :root {
@@ -44,7 +44,7 @@
 
         .container { max-width: 1450px; margin: auto; }
 
-        /* ترويسة الصفحة الفاخرة */
+        /* ترويسة الصفحة */
         .header {
             display: flex;
             justify-content: space-between;
@@ -83,9 +83,22 @@
             display: block;
         }
 
-        .actions-group { display: flex; gap: 10px; flex-wrap: wrap; }
+        .actions-group { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+        
+        .live-badge {
+            background: rgba(16, 185, 129, 0.15);
+            border: 1px solid rgba(16, 185, 129, 0.4);
+            color: var(--emerald);
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
 
-        /* أزرار ميتاليك فاخرة */
+        /* أزرار ميتاليك */
         .btn {
             font-family: 'Tajawal', sans-serif;
             font-weight: 700;
@@ -104,10 +117,7 @@
             color: #060a12;
             box-shadow: 0 4px 15px rgba(212, 175, 55, 0.25);
         }
-        .btn-gold:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(212, 175, 55, 0.45);
-        }
+        .btn-gold:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(212, 175, 55, 0.45); }
         .btn-glass {
             background: rgba(255, 255, 255, 0.05);
             color: var(--cream-text);
@@ -132,11 +142,11 @@
         }
         .btn-danger:hover { background: var(--ruby); color: #fff; transform: translateY(-2px); }
 
-        .btn-action-sell { background: var(--emerald-bg); color: var(--emerald); border: 1px solid rgba(16, 185, 129, 0.3); padding: 5px 9px; font-size: 0.8rem; border-radius: 5px; }
+        .btn-action-sell { background: var(--emerald-bg); color: var(--emerald); border: 1px solid rgba(16, 185, 129, 0.3); padding: 5px 9px; font-size: 0.8rem; border-radius: 5px; cursor: pointer; }
         .btn-action-sell:hover { background: var(--emerald); color: #fff; }
-        .btn-action-edit { background: rgba(212, 175, 55, 0.15); color: var(--gold-light); border: 1px solid var(--gold-border); padding: 5px 9px; font-size: 0.8rem; border-radius: 5px; }
+        .btn-action-edit { background: rgba(212, 175, 55, 0.15); color: var(--gold-light); border: 1px solid var(--gold-border); padding: 5px 9px; font-size: 0.8rem; border-radius: 5px; cursor: pointer; }
         .btn-action-edit:hover { background: var(--gold-primary); color: #000; }
-        .btn-action-del { background: var(--ruby-bg); color: var(--ruby); border: 1px solid rgba(244, 63, 94, 0.3); padding: 5px 9px; font-size: 0.8rem; border-radius: 5px; }
+        .btn-action-del { background: var(--ruby-bg); color: var(--ruby); border: 1px solid rgba(244, 63, 94, 0.3); padding: 5px 9px; font-size: 0.8rem; border-radius: 5px; cursor: pointer; }
         .btn-action-del:hover { background: var(--ruby); color: #fff; }
 
         /* شبكة الإعدادات والمدخلات */
@@ -216,7 +226,8 @@
             overflow: hidden;
             backdrop-filter: blur(12px);
             box-shadow: 0 8px 24px rgba(0,0,0,0.4);
-            border-right: 3px solid var(--gold-primary);
+            border-right: 3.5px solid var(--gold-primary);
+            transition: all 0.3s ease;
         }
         .metric-card.profit { border-right-color: var(--emerald); }
         .metric-card.loss { border-right-color: var(--ruby); }
@@ -236,6 +247,16 @@
             font-weight: 700;
             color: var(--cream-text);
             letter-spacing: -0.5px;
+        }
+
+        /* تخصيص لون الخط للربح والخسارة */
+        .metric-card p.badge-profit, span.badge-profit, td.badge-profit {
+            color: var(--emerald) !important;
+            text-shadow: 0 0 14px rgba(16, 185, 129, 0.45);
+        }
+        .metric-card p.badge-loss, span.badge-loss, td.badge-loss {
+            color: var(--ruby) !important;
+            text-shadow: 0 0 14px rgba(244, 63, 94, 0.45);
         }
 
         /* الصناديق والأقسام */
@@ -268,7 +289,7 @@
             gap: 8px;
         }
 
-        /* الجداول الفاخرة */
+        /* الجداول */
         .table-responsive { width: 100%; overflow-x: auto; border-radius: 8px; }
         table {
             width: 100%;
@@ -306,9 +327,6 @@
             transform: scale(1.002);
         }
 
-        .badge-profit { color: var(--emerald); font-weight: 700; text-shadow: 0 0 10px rgba(16, 185, 129, 0.3); }
-        .badge-loss { color: var(--ruby); font-weight: 700; text-shadow: 0 0 10px rgba(244, 63, 94, 0.3); }
-
         .table-input {
             width: 60px;
             background: rgba(6, 10, 18, 0.8);
@@ -333,7 +351,7 @@
             box-shadow: 0 2px 8px rgba(0,0,0,0.3);
         }
 
-        /* النوافذ المنبثقة (Modals) */
+        /* Modals */
         .modal {
             display: none;
             position: fixed;
@@ -384,7 +402,6 @@
         }
         .modal-actions { display: flex; justify-content: flex-end; gap: 10px; margin-top: 20px; }
 
-        /* التنبيه العائم */
         .toast {
             position: fixed;
             bottom: 24px;
@@ -405,7 +422,7 @@
 <body>
 <div class="container">
     
-    <!-- الترويسة العليا والبراند -->
+    <!-- الترويسة -->
     <div class="header">
         <div class="brand-title">
             <span class="logo-icon">⚜️</span>
@@ -415,7 +432,8 @@
             </div>
         </div>
         <div class="actions-group">
-            <button class="btn btn-gold" onclick="fetchLivePrice()">تحديث السعر الفوري 🔄</button>
+            <div class="live-badge" id="liveStatus">🟢 بث مباشر (تحديث تلقائي: نشط)</div>
+            <button class="btn btn-gold" onclick="fetchLivePrice(true)">تحديث السعر الفوري 🔄</button>
             <button class="btn btn-emerald" onclick="manualSave()">حفظ التغييرات 💾</button>
             <button class="btn btn-glass" onclick="exportJSON()">تصدير JSON 📤</button>
             <button class="btn btn-glass" onclick="document.getElementById('importFileInput').click()">استيراد JSON 📥</button>
@@ -424,7 +442,7 @@
         </div>
     </div>
 
-    <!-- شبكة الإعدادات والتحكم بالأسعار والألوان -->
+    <!-- الإعدادات والأسعار والألوان -->
     <div class="grid-inputs">
         <div class="luxury-card">
             <label>سعر أونصة الذهب (USD)</label>
@@ -452,7 +470,7 @@
         </div>
     </div>
 
-    <!-- كروت الملخص المالي التنفيذي -->
+    <!-- كروت الملخص المالي -->
     <div class="summary-grid">
         <div class="metric-card">
             <h3>سعر جرام الذهب الصافي (Spot)</h3>
@@ -476,7 +494,7 @@
         </div>
     </div>
 
-    <!-- 1. ملخص البنوك الفاخر -->
+    <!-- 1. ملخص البنوك -->
     <div class="section-box">
         <div class="section-header">
             <h3>🏦 ملخص المراكز المالية حسب البنك</h3>
@@ -498,7 +516,7 @@
         </div>
     </div>
 
-    <!-- 2. جدول الصفقات الحالية -->
+    <!-- 2. الصفقات الحالية -->
     <div class="section-box">
         <div class="section-header">
             <h3>🟡 الصفقات الحالية (المحافظ المفتوحة)</h3>
@@ -527,14 +545,13 @@
         </div>
     </div>
 
-    <!-- 3. سجل الصفقات المنتهية -->
+    <!-- 3. الصفقات المنتهية -->
     <div class="section-box">
         <div class="section-header">
             <h3>🟢 سجل الصفقات المنتهية (الأرباح المحققة)</h3>
             <button class="btn btn-emerald" onclick="openClosedDealModal()">+ إضافة صفقة منتهية يدوياً</button>
         </div>
         
-        <!-- بطاقات ملخص الصفقات المنتهية -->
         <div class="summary-grid" style="margin-bottom: 16px;">
             <div class="metric-card">
                 <h3>إجمالي الذهب المباع</h3>
@@ -627,7 +644,7 @@
     </div>
 </div>
 
-<!-- Modal: إضافة/تعديل صفقة منتهية يدوياً -->
+<!-- Modal: إضافة/تعديل صفقة منتهية -->
 <div id="closedModal" class="modal">
     <div class="modal-content">
         <h3 id="closedModalTitle">إضافة صفقة منتهية</h3>
@@ -667,7 +684,6 @@
 <script>
     const OUNCE_TO_GRAM = 31.1034768;
 
-    // دالة تنسيق الأرقام القياسية بالفواصل
     function fmt(val, decimals = 2) {
         const num = parseFloat(val);
         if (isNaN(num)) return "0.00";
@@ -677,7 +693,6 @@
         });
     }
 
-    // توليد لون خلفية شبه شفاف فاخر
     function hexToRgba(hex, alpha = 0.22) {
         hex = hex.replace('#', '');
         if (hex.length === 3) hex = hex.split('').map(c => c + c).join('');
@@ -687,7 +702,6 @@
         return `rgba(${r}, ${g}, ${b}, ${alpha})`;
     }
 
-    // الصفقات الافتراضية الأولية
     const defaultActiveDeals = [
         { bank: "الراجحي", weight: 20, buyTotal: 11969, spread: 2.0 },
         { bank: "الأهلي",  weight: 20, buyTotal: 11818, spread: 2.0 },
@@ -701,7 +715,6 @@
     let activeDeals = JSON.parse(localStorage.getItem('gold_active_deals')) || defaultActiveDeals;
     let closedDeals = JSON.parse(localStorage.getItem('gold_closed_deals')) || defaultClosedDeals;
     
-    // استعادة الإعدادات
     const savedSettings = JSON.parse(localStorage.getItem('gold_settings'));
     if (savedSettings) {
         document.getElementById('ouncePrice').value = savedSettings.ouncePrice ?? 4455.02;
@@ -739,17 +752,25 @@
         showToast("تم حفظ كافة التغييرات وإعدادات المحفظة بنجاح! 💾");
     }
 
-    async function fetchLivePrice() {
+    // جلب السعر الفوري (تلقائي / يدوي)
+    async function fetchLivePrice(isManual = false) {
         try {
             const res = await fetch('https://api.gold-api.com/price/XAU');
             const data = await res.json();
             if (data && data.price) {
-                document.getElementById('ouncePrice').value = data.price.toFixed(2);
-                calculateAll();
-                showToast("تم تحديث سعر أونصة الذهب الفوري! 🔄");
+                // إذا لم يكن المستخدم يكتب حالياً في الخانة
+                if (document.activeElement !== document.getElementById('ouncePrice') || isManual) {
+                    document.getElementById('ouncePrice').value = data.price.toFixed(2);
+                    calculateAll();
+                }
+                const now = new Date();
+                const timeStr = now.toLocaleTimeString('ar-SA', { hour: '2-digit', minute: '2-digit', second: '2-digit' });
+                document.getElementById('liveStatus').innerHTML = `🟢 بث مباشر (${timeStr})`;
+                if (isManual) showToast("تم تحديث سعر أونصة الذهب الفوري بنجاح! 🔄");
             }
         } catch (e) {
-            alert("تعذر جلب السعر اللحظي، يرجى كتابة سعر الأونصة يدوياً.");
+            if (isManual) alert("تعذر جلب السعر اللحظي، يرجى كتابة سعر الأونصة يدوياً.");
+            document.getElementById('liveStatus').innerHTML = `⚠️ تعذر البث التلقائي`;
         }
     }
 
@@ -916,7 +937,7 @@
         closedPnLElem.className = netClosedPnL >= 0 ? 'badge-profit' : 'badge-loss';
         document.getElementById('closedPnLCard').className = `metric-card ${netClosedPnL >= 0 ? 'profit' : 'loss'}`;
 
-        // الكروت الإجمالية الرئيسية
+        // الكروت الإجمالية الرئيسية وتطبيق ألوان الربح والخسارة على النص مباشرة
         document.getElementById('totalWeight').innerText = fmt(totalWeight, 2) + " جم";
         document.getElementById('totalInvested').innerText = fmt(totalInvested, 2) + " ر.س";
 
@@ -925,11 +946,14 @@
         
         const unCard = document.getElementById('unrealizedCard');
         const unElem = document.getElementById('totalUnrealizedPnL');
+        
         unElem.innerText = `${totalUnrealizedPnL > 0 ? '+' : ''}${fmt(totalUnrealizedPnL, 2)} ر.س (${fmt(totalUnrealizedPct, 2)}%)`;
         unElem.className = totalUnrealizedPnL >= 0 ? 'badge-profit' : 'badge-loss';
         unCard.className = `metric-card ${totalUnrealizedPnL >= 0 ? 'profit' : 'loss'}`;
 
-        document.getElementById('totalRealizedPnL').innerText = `${netClosedPnL > 0 ? '+' : ''}${fmt(netClosedPnL, 2)} ر.س`;
+        const totalRealizedElem = document.getElementById('totalRealizedPnL');
+        totalRealizedElem.innerText = `${netClosedPnL > 0 ? '+' : ''}${fmt(netClosedPnL, 2)} ر.س`;
+        totalRealizedElem.className = netClosedPnL >= 0 ? 'badge-profit' : 'badge-loss';
 
         autoSave();
     }
@@ -1128,8 +1152,10 @@
         }
     }
 
-    // البدء الفوري
+    // البدء الفوري وجدولة التحديث التلقائي كل 30 ثانية
     calculateAll();
+    fetchLivePrice(false);
+    setInterval(() => fetchLivePrice(false), 30000);
 </script>
 </body>
 </html>

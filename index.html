@@ -165,10 +165,20 @@
 
         .metric-card h3 { margin: 0 0 6px 0; font-size: 0.8rem; color: var(--cream-muted); font-weight: 500; }
         .metric-card p { margin: 0; font-family: 'Readex Pro', sans-serif; font-size: 1.35rem; font-weight: 700; color: var(--cream-text); letter-spacing: -0.5px; }
-        .metric-card p.badge-profit, span.badge-profit, td.badge-profit { color: var(--emerald) !important; text-shadow: 0 0 14px rgba(16, 185, 129, 0.45); }
-        .metric-card p.badge-loss, span.badge-loss, td.badge-loss { color: var(--ruby) !important; text-shadow: 0 0 14px rgba(244, 63, 94, 0.45); }
 
-        /* الصناديق */
+        /* التلوين العام للربح والخسارة لجميع العناصر */
+        .badge-profit, strong.badge-profit, span.badge-profit, p.badge-profit, td.badge-profit {
+            color: var(--emerald) !important;
+            text-shadow: 0 0 12px rgba(16, 185, 129, 0.45) !important;
+            font-weight: 700 !important;
+        }
+        .badge-loss, strong.badge-loss, span.badge-loss, p.badge-loss, td.badge-loss {
+            color: var(--ruby) !important;
+            text-shadow: 0 0 12px rgba(244, 63, 94, 0.45) !important;
+            font-weight: 700 !important;
+        }
+
+        /* الصناديق والأقسام */
         .section-box {
             background: var(--card-bg);
             border: 1px solid var(--border-soft);
@@ -483,16 +493,16 @@
                     </div>
                     <div style="display:flex; justify-content:space-between; margin-bottom:6px; font-size:0.85rem;">
                         <span style="color:var(--cream-muted)">صافي الأرباح المتوقعة:</span>
-                        <strong id="simNetPnL" class="badge-profit">0.00 ر.س (0.00%)</strong>
+                        <strong id="simNetPnL">0.00 ر.س (0.00%)</strong>
                     </div>
                     <div style="display:flex; justify-content:space-between; font-size:0.85rem; border-top:1px dashed var(--border-soft); padding-top:6px;">
                         <span style="color:var(--cream-muted)">فارق الربح عن الوضع الحالي:</span>
-                        <strong id="simProfitDiff" style="color:var(--sapphire);">+0.00 ر.س</strong>
+                        <strong id="simProfitDiff">0.00 ر.س</strong>
                     </div>
                 </div>
             </div>
 
-            <!-- أداة 3: حاسبة التبريد وتعديل المتوسط (DCA) - محدثة بالكامل -->
+            <!-- أداة 3: حاسبة التبريد وتعديل المتوسط (DCA) -->
             <div class="tool-card">
                 <h4>⚖️ حاسبة التبريد وتعديل المتوسط (DCA)</h4>
                 
@@ -1014,7 +1024,7 @@
         container.innerHTML = html;
     }
 
-    // 2. محاكي سيناريوهات الأرباح
+    // 2. محاكي سيناريوهات الأرباح وتطبيق ألوان الربح والخسارة عليها
     function runProfitSimulation() {
         const simOunce = parseFloat(document.getElementById('simTargetOunce').value) || 0;
         const usdSar = parseFloat(document.getElementById('usdToSar').value) || 3.75;
@@ -1045,13 +1055,18 @@
         const diff = simNetTotal - currentNetVal;
 
         document.getElementById('simNetVal').innerText = fmt(simNetTotal, 2) + " ر.س";
+        
+        // تطبيق الألوان بدقة
         const simPnLElem = document.getElementById('simNetPnL');
         simPnLElem.innerText = `${simPnL > 0 ? '+' : ''}${fmt(simPnL, 2)} ر.س (${fmt(simPnLPct, 2)}%)`;
         simPnLElem.className = simPnL >= 0 ? 'badge-profit' : 'badge-loss';
-        document.getElementById('simProfitDiff').innerText = `${diff >= 0 ? '+' : ''}${fmt(diff, 2)} ر.س`;
+
+        const simDiffElem = document.getElementById('simProfitDiff');
+        simDiffElem.innerText = `${diff >= 0 ? '+' : ''}${fmt(diff, 2)} ر.س`;
+        simDiffElem.className = diff >= 0 ? 'badge-profit' : 'badge-loss';
     }
 
-    // 3. حاسبة التبريد وتعديل المتوسط (DCA) - محدثة لسعر الأونصة
+    // 3. حاسبة التبريد وتعديل المتوسط (DCA)
     function runDCACalculator() {
         const addWeight = parseFloat(document.getElementById('dcaWeight').value) || 0;
         const addOuncePrice = parseFloat(document.getElementById('dcaOuncePrice').value) || 0;

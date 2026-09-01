@@ -201,6 +201,38 @@
         }
         .tool-card h4 { margin: 0 0 14px 0; color: var(--gold-light); font-size: 1rem; display: flex; align-items: center; gap: 8px; border-bottom: 1px solid var(--border-soft); padding-bottom: 8px; }
 
+        /* حقول الأدوات المنسقة */
+        .input-group-custom {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+            margin-bottom: 12px;
+        }
+        .input-group-custom label {
+            font-size: 0.8rem;
+            color: var(--cream-muted);
+            font-weight: 600;
+            text-align: right;
+        }
+        .input-group-custom input {
+            width: 100%;
+            background: rgba(6, 10, 18, 0.85);
+            border: 1px solid var(--border-soft);
+            color: var(--gold-light);
+            font-family: 'Readex Pro', sans-serif;
+            font-weight: 700;
+            padding: 9px 12px;
+            border-radius: 6px;
+            font-size: 0.95rem;
+            text-align: right;
+            box-sizing: border-box;
+        }
+        .input-group-custom input:focus {
+            outline: none;
+            border-color: var(--gold-primary);
+            box-shadow: 0 0 8px rgba(212, 175, 55, 0.3);
+        }
+
         /* الجداول */
         .table-responsive { width: 100%; overflow-x: auto; border-radius: 8px; }
         table { width: 100%; border-collapse: separate; border-spacing: 0 4px; min-width: 980px; }
@@ -413,35 +445,36 @@
             <div class="tool-card">
                 <h4>🔔 نظام تنبيهات الأسعار الفوري</h4>
                 <div style="display:grid; grid-template-columns: 1fr 1fr; gap:8px; margin-bottom:10px;">
-                    <div>
-                        <label style="font-size:0.75rem; color:var(--cream-muted)">سعر الأونصة المستهدف ($)</label>
-                        <input type="number" id="alertTargetPrice" placeholder="مثال: 4600" class="table-input" style="width:100%; text-align:right; padding:8px;">
+                    <div class="input-group-custom" style="margin-bottom:0;">
+                        <label>سعر الأونصة المستهدف ($)</label>
+                        <input type="number" id="alertTargetPrice" placeholder="مثال: 4600">
                     </div>
-                    <div>
-                        <label style="font-size:0.75rem; color:var(--cream-muted)">الشرط</label>
-                        <select id="alertCondition" style="width:100%; padding:8px; background:#060A12; border:1px solid var(--border-soft); color:#fff; border-radius:5px; font-family:'Tajawal';">
+                    <div class="input-group-custom" style="margin-bottom:0;">
+                        <label>الشرط</label>
+                        <select id="alertCondition" style="width:100%; padding:9px 8px; background:#060A12; border:1px solid var(--border-soft); color:#fff; border-radius:6px; font-family:'Tajawal'; font-weight:700;">
                             <option value="gte">عند الوصول أو أعلى ( $\ge$ )</option>
                             <option value="lte">عند الهبوط أو أدنى ( $\le$ )</option>
                         </select>
                     </div>
                 </div>
-                <div style="margin-bottom:10px;">
-                    <input type="text" id="alertNote" placeholder="ملاحظة التنبيه (مثال: جني أرباح / فرصة شراء)" style="width:100%; padding:8px; background:#060A12; border:1px solid var(--border-soft); color:#fff; border-radius:5px; font-family:'Tajawal'; font-size:0.85rem;">
+                <div class="input-group-custom">
+                    <input type="text" id="alertNote" placeholder="ملاحظة التنبيه (مثال: جني أرباح / فرصة شراء)">
                 </div>
                 <button class="btn btn-gold" style="width:100%; justify-content:center;" onclick="addPriceAlert()">+ تفعيل التنبيه</button>
 
-                <!-- قائمة التنبيهات المضافة -->
                 <div style="margin-top:14px; max-height:160px; overflow-y:auto;" id="alertsList"></div>
             </div>
 
             <!-- أداة 2: حاسبة سيناريو سعر البيع المستهدف -->
             <div class="tool-card">
                 <h4>🎯 محاكي سيناريوهات التخارج والأرباح</h4>
-                <label style="font-size:0.75rem; color:var(--cream-muted)">افترض سعر أونصة مستهدف للبيع (USD):</label>
-                <div style="display:flex; gap:8px; margin-top:4px; margin-bottom:12px;">
-                    <input type="number" id="simTargetOunce" value="4650" step="10" oninput="runProfitSimulation()" class="table-input" style="width:100%; text-align:right; font-size:1.1rem; padding:8px;">
-                    <button class="btn btn-glass" onclick="document.getElementById('simTargetOunce').value=4800; runProfitSimulation();">$4,800</button>
-                    <button class="btn btn-glass" onclick="document.getElementById('simTargetOunce').value=5000; runProfitSimulation();">$5,000</button>
+                <div class="input-group-custom">
+                    <label>سعر أونصة مستهدف للبيع (USD):</label>
+                    <div style="display:flex; gap:8px;">
+                        <input type="number" id="simTargetOunce" value="4650" step="10" oninput="runProfitSimulation()">
+                        <button class="btn btn-glass" onclick="document.getElementById('simTargetOunce').value=4800; runProfitSimulation();">$4,800</button>
+                        <button class="btn btn-glass" onclick="document.getElementById('simTargetOunce').value=5000; runProfitSimulation();">$5,000</button>
+                    </div>
                 </div>
                 <div style="background:rgba(6,10,18,0.7); border:1px solid var(--border-soft); border-radius:8px; padding:12px;">
                     <div style="display:flex; justify-content:space-between; margin-bottom:6px; font-size:0.85rem;">
@@ -449,7 +482,7 @@
                         <strong id="simNetVal" style="color:var(--gold-light);">0.00 ر.س</strong>
                     </div>
                     <div style="display:flex; justify-content:space-between; margin-bottom:6px; font-size:0.85rem;">
-                        <span style="color:var(--cream-muted)">صافي الأرباح المحققة المتوقعة:</span>
+                        <span style="color:var(--cream-muted)">صافي الأرباح المتوقعة:</span>
                         <strong id="simNetPnL" class="badge-profit">0.00 ر.س (0.00%)</strong>
                     </div>
                     <div style="display:flex; justify-content:space-between; font-size:0.85rem; border-top:1px dashed var(--border-soft); padding-top:6px;">
@@ -459,27 +492,40 @@
                 </div>
             </div>
 
-            <!-- أداة 3: حاسبة التبريد وتعديل المتوسط (DCA) -->
+            <!-- أداة 3: حاسبة التبريد وتعديل المتوسط (DCA) - محدثة بالكامل -->
             <div class="tool-card">
                 <h4>⚖️ حاسبة التبريد وتعديل المتوسط (DCA)</h4>
-                <div style="display:grid; grid-template-columns: 1fr 1fr; gap:8px; margin-bottom:10px;">
-                    <div>
-                        <label style="font-size:0.75rem; color:var(--cream-muted)">وزن الشراء الجديد (جم)</label>
-                        <input type="number" id="dcaWeight" placeholder="مثال: 50" oninput="runDCACalculator()" class="table-input" style="width:100%; text-align:right; padding:8px;">
+                
+                <div style="display:grid; grid-template-columns: 1fr 1fr; gap:10px; margin-bottom:10px;">
+                    <div class="input-group-custom" style="margin-bottom:0;">
+                        <label>وزن الشراء الجديد (جم)</label>
+                        <input type="number" id="dcaWeight" placeholder="مثال: 50" oninput="runDCACalculator()" step="0.1">
                     </div>
-                    <div>
-                        <label style="font-size:0.75rem; color:var(--cream-muted)">سعر شراء الجرام الجديد (ر.س)</label>
-                        <input type="number" id="dcaGramPrice" placeholder="مثال: 520" oninput="runDCACalculator()" class="table-input" style="width:100%; text-align:right; padding:8px;">
+                    <div class="input-group-custom" style="margin-bottom:0;">
+                        <div style="display:flex; justify-content:space-between; align-items:center;">
+                            <label>سعر شراء الأونصة ($)</label>
+                            <span style="font-size:0.7rem; color:var(--gold-light); cursor:pointer; text-decoration:underline;" onclick="fillCurrentOunceDCA()">السعر الحالي</span>
+                        </div>
+                        <input type="number" id="dcaOuncePrice" placeholder="مثال: 4350" oninput="runDCACalculator()" step="0.1">
                     </div>
                 </div>
+
                 <div style="background:rgba(6,10,18,0.7); border:1px solid var(--border-soft); border-radius:8px; padding:12px;">
-                    <div style="display:flex; justify-content:space-between; margin-bottom:6px; font-size:0.85rem;">
+                    <div style="display:flex; justify-content:space-between; margin-bottom:5px; font-size:0.82rem;">
+                        <span style="color:var(--cream-muted)">سعر شراء الجرام الجديد:</span>
+                        <strong id="dcaGramPriceResult" style="color:var(--cream-text);">0.00 ر.س/جم</strong>
+                    </div>
+                    <div style="display:flex; justify-content:space-between; margin-bottom:5px; font-size:0.82rem;">
+                        <span style="color:var(--cream-muted)">تكلفة الصفقة الإضافية:</span>
+                        <strong id="dcaAddCost" style="color:var(--cream-text);">0.00 ر.س</strong>
+                    </div>
+                    <div style="display:flex; justify-content:space-between; margin-bottom:5px; font-size:0.85rem; border-top:1px dashed var(--border-soft); padding-top:6px;">
                         <span style="color:var(--cream-muted)">متوسط تكلفة الجرام الجديد:</span>
                         <strong id="dcaNewAvg" style="color:var(--gold-light);">0.00 ر.س/جم</strong>
                     </div>
                     <div style="display:flex; justify-content:space-between; font-size:0.85rem;">
                         <span style="color:var(--cream-muted)">نقطة أونصة التعادل الجديدة:</span>
-                        <strong id="dcaNewBreakEven" style="color:var(--emerald);">$0.00</strong>
+                        <strong id="dcaNewBreakEven" style="color:var(--emerald); font-size:0.95rem;">$0.00</strong>
                     </div>
                 </div>
             </div>
@@ -618,7 +664,6 @@
         return `rgba(${r}, ${g}, ${b}, ${alpha})`;
     }
 
-    // جرس تنبيه صوتي فاخر (Web Audio API)
     function playChime() {
         try {
             const ctx = new (window.AudioContext || window.webkitAudioContext)();
@@ -727,6 +772,12 @@
         const bank = document.getElementById('dealBank').value;
         const defaultSpread = bank === 'الراجحي' ? document.getElementById('spreadRajhi').value : document.getElementById('spreadAhli').value;
         document.getElementById('dealSpread').value = defaultSpread;
+    }
+
+    function fillCurrentOunceDCA() {
+        const curOunce = document.getElementById('ouncePrice').value;
+        document.getElementById('dcaOuncePrice').value = curOunce;
+        runDCACalculator();
     }
 
     function calculateAll() {
@@ -857,7 +908,6 @@
         });
         document.getElementById('closedDealsTable').innerHTML = closedHtml || `<tr><td colspan="9" style="padding:25px; color:var(--cream-muted)">لا توجد صفقات منتهية مسجلة</td></tr>`;
 
-        // كروت إحصائيات الصفقات المنتهية
         const netClosedPnL = closedSell - closedBuy;
         const netClosedPct = closedBuy > 0 ? (netClosedPnL / closedBuy) * 100 : 0;
         document.getElementById('closedTotalWeight').innerText = fmt(closedWeight, 2) + " جم";
@@ -887,7 +937,7 @@
         totalRealizedElem.innerText = `${netClosedPnL > 0 ? '+' : ''}${fmt(netClosedPnL, 2)} ر.س`;
         totalRealizedElem.className = netClosedPnL >= 0 ? 'badge-profit' : 'badge-loss';
 
-        // تشغيل وفحص الأدوات المساعدة
+        // تشغيل الأدوات
         checkPriceAlerts(ounceUSD);
         renderAlertsList();
         runProfitSimulation();
@@ -985,7 +1035,6 @@
         const simPnL = simNetTotal - currentInvested;
         const simPnLPct = currentInvested > 0 ? (simPnL / currentInvested) * 100 : 0;
 
-        // القيمة الحالية للمقارنة
         const currentOunce = parseFloat(document.getElementById('ouncePrice').value) || 0;
         const currentSpot = (currentOunce * usdSar) / OUNCE_TO_GRAM;
         let currentNetVal = 0;
@@ -1002,10 +1051,10 @@
         document.getElementById('simProfitDiff').innerText = `${diff >= 0 ? '+' : ''}${fmt(diff, 2)} ر.س`;
     }
 
-    // 3. حاسبة التبريد (DCA)
+    // 3. حاسبة التبريد وتعديل المتوسط (DCA) - محدثة لسعر الأونصة
     function runDCACalculator() {
         const addWeight = parseFloat(document.getElementById('dcaWeight').value) || 0;
-        const addGramPrice = parseFloat(document.getElementById('dcaGramPrice').value) || 0;
+        const addOuncePrice = parseFloat(document.getElementById('dcaOuncePrice').value) || 0;
         const usdSar = parseFloat(document.getElementById('usdToSar').value) || 3.75;
         const avgSpread = 2.0;
 
@@ -1017,17 +1066,25 @@
             totalInvested += d.buyTotal;
         });
 
-        if (addWeight > 0 && addGramPrice > 0) {
+        if (addWeight > 0 && addOuncePrice > 0) {
+            const addGramPrice = (addOuncePrice * usdSar) / OUNCE_TO_GRAM;
+            const addCost = addWeight * addGramPrice;
+
             const newTotalWeight = totalWeight + addWeight;
-            const newTotalInvested = totalInvested + (addWeight * addGramPrice);
+            const newTotalInvested = totalInvested + addCost;
             const newAvgGram = newTotalInvested / newTotalWeight;
             const newBreakEvenOunce = (newAvgGram / (1 - (avgSpread / 100))) * OUNCE_TO_GRAM / usdSar;
 
+            document.getElementById('dcaGramPriceResult').innerText = fmt(addGramPrice, 2) + " ر.س/جم";
+            document.getElementById('dcaAddCost').innerText = fmt(addCost, 2) + " ر.س";
             document.getElementById('dcaNewAvg').innerText = fmt(newAvgGram, 2) + " ر.س/جم";
             document.getElementById('dcaNewBreakEven').innerText = "$" + fmt(newBreakEvenOunce, 2);
         } else {
             const curAvg = totalWeight > 0 ? (totalInvested / totalWeight) : 0;
             const curBreakEven = (curAvg / (1 - (avgSpread / 100))) * OUNCE_TO_GRAM / usdSar;
+            
+            document.getElementById('dcaGramPriceResult').innerText = "0.00 ر.س/جم";
+            document.getElementById('dcaAddCost').innerText = "0.00 ر.س";
             document.getElementById('dcaNewAvg').innerText = fmt(curAvg, 2) + " ر.س/جم";
             document.getElementById('dcaNewBreakEven').innerText = "$" + fmt(curBreakEven, 2);
         }

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="ar" dir="rtl" data-theme="dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,11 +10,12 @@
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700;800&family=Tajawal:wght@300;400;500;700;800;900&family=Readex+Pro:wght@400;600;700;800&display=swap" rel="stylesheet">
     
     <style>
+        /* المتغيرات للمظهر الداكن الفاخر (Luxury Dark) */
         :root {
             --bg-deep: #060a12;
             --bg-gradient: radial-gradient(circle at 50% 0%, #121c33 0%, #060a12 75%);
             --card-bg: rgba(14, 22, 41, 0.75);
-            --card-hover: rgba(20, 31, 56, 0.85);
+            --card-inner: rgba(6, 10, 18, 0.85);
             --gold-light: #F9E79F;
             --gold-primary: #D4AF37;
             --gold-dark: #996515;
@@ -22,12 +23,43 @@
             --gold-border: rgba(212, 175, 55, 0.28);
             --cream-text: #FDFBF7;
             --cream-muted: #B8B2A6;
+            --table-th-bg: rgba(18, 28, 51, 0.85);
+            --border-soft: rgba(255, 255, 255, 0.08);
+            --input-bg: rgba(6, 10, 18, 0.7);
+            --modal-bg: #0E1629;
+            --modal-backdrop: rgba(4, 7, 13, 0.85);
+            --shadow-card: 0 10px 25px rgba(0, 0, 0, 0.45);
             --emerald: #10B981;
             --emerald-bg: rgba(16, 185, 129, 0.12);
             --ruby: #F43F5E;
             --ruby-bg: rgba(244, 63, 94, 0.12);
             --sapphire: #38BDF8;
-            --border-soft: rgba(255, 255, 255, 0.08);
+        }
+
+        /* المتغيرات للمظهر الفاتح الراقي (Professional Polish Light) */
+        [data-theme="light"] {
+            --bg-deep: #F4F6F9;
+            --bg-gradient: radial-gradient(circle at 50% 0%, #FFFFFF 0%, #F1F5F9 100%);
+            --card-bg: rgba(255, 255, 255, 0.95);
+            --card-inner: #F8FAFC;
+            --gold-light: #B8860B;
+            --gold-primary: #C59B27;
+            --gold-dark: #8C6207;
+            --gold-gradient: linear-gradient(135deg, #D4AF37 0%, #B8860B 50%, #8C6207 100%);
+            --gold-border: rgba(197, 155, 39, 0.35);
+            --cream-text: #0F172A;
+            --cream-muted: #64748B;
+            --table-th-bg: #E2E8F0;
+            --border-soft: rgba(203, 213, 225, 0.8);
+            --input-bg: #FFFFFF;
+            --modal-bg: #FFFFFF;
+            --modal-backdrop: rgba(15, 23, 42, 0.65);
+            --shadow-card: 0 8px 24px rgba(15, 23, 42, 0.08);
+            --emerald: #059669;
+            --emerald-bg: rgba(5, 150, 105, 0.12);
+            --ruby: #DC2626;
+            --ruby-bg: rgba(220, 38, 38, 0.12);
+            --sapphire: #0284C7;
         }
 
         * { box-sizing: border-box; }
@@ -40,6 +72,7 @@
             padding: 24px 16px;
             margin: 0;
             min-height: 100vh;
+            transition: background 0.3s ease, color 0.3s ease;
         }
 
         .container { max-width: 1450px; margin: auto; }
@@ -70,10 +103,11 @@
         }
         .brand-title span { font-family: 'Cinzel', serif; font-size: 0.75rem; color: var(--cream-muted); letter-spacing: 2px; display: block; }
 
-        .actions-group { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+        .actions-group { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+        
         .live-badge {
-            background: rgba(16, 185, 129, 0.15);
-            border: 1px solid rgba(16, 185, 129, 0.4);
+            background: var(--emerald-bg);
+            border: 1px solid var(--emerald);
             color: var(--emerald);
             padding: 6px 12px;
             border-radius: 20px;
@@ -89,7 +123,7 @@
             font-family: 'Tajawal', sans-serif;
             font-weight: 700;
             font-size: 0.85rem;
-            padding: 9px 16px;
+            padding: 9px 15px;
             border-radius: 8px;
             border: 1px solid transparent;
             cursor: pointer;
@@ -98,20 +132,27 @@
             align-items: center;
             gap: 6px;
         }
-        .btn-gold { background: var(--gold-gradient); color: #060a12; box-shadow: 0 4px 15px rgba(212, 175, 55, 0.25); }
+        .btn-gold { background: var(--gold-gradient); color: #060a12; box-shadow: 0 4px 15px rgba(212, 175, 55, 0.25); font-weight: 800; }
         .btn-gold:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(212, 175, 55, 0.45); }
-        .btn-glass { background: rgba(255, 255, 255, 0.05); color: var(--cream-text); border: 1px solid var(--border-soft); backdrop-filter: blur(8px); }
-        .btn-glass:hover { background: rgba(255, 255, 255, 0.1); border-color: var(--gold-primary); transform: translateY(-2px); }
+        .btn-theme {
+            background: var(--card-inner);
+            color: var(--gold-light);
+            border: 1px solid var(--gold-border);
+            box-shadow: var(--shadow-card);
+        }
+        .btn-theme:hover { transform: translateY(-2px); border-color: var(--gold-primary); }
+        .btn-glass { background: var(--card-inner); color: var(--cream-text); border: 1px solid var(--border-soft); backdrop-filter: blur(8px); }
+        .btn-glass:hover { background: rgba(200, 200, 200, 0.15); border-color: var(--gold-primary); transform: translateY(-2px); }
         .btn-emerald { background: linear-gradient(135deg, #10B981, #047857); color: #fff; box-shadow: 0 4px 12px rgba(16, 185, 129, 0.25); }
         .btn-emerald:hover { transform: translateY(-2px); box-shadow: 0 6px 16px rgba(16, 185, 129, 0.4); }
-        .btn-danger { background: rgba(244, 63, 94, 0.15); color: #FDA4AF; border: 1px solid rgba(244, 63, 94, 0.3); }
+        .btn-danger { background: var(--ruby-bg); color: var(--ruby); border: 1px solid var(--ruby); }
         .btn-danger:hover { background: var(--ruby); color: #fff; transform: translateY(-2px); }
 
-        .btn-action-sell { background: var(--emerald-bg); color: var(--emerald); border: 1px solid rgba(16, 185, 129, 0.3); padding: 5px 9px; font-size: 0.8rem; border-radius: 5px; cursor: pointer; }
+        .btn-action-sell { background: var(--emerald-bg); color: var(--emerald); border: 1px solid var(--emerald); padding: 5px 9px; font-size: 0.8rem; border-radius: 5px; cursor: pointer; font-weight: 700; }
         .btn-action-sell:hover { background: var(--emerald); color: #fff; }
-        .btn-action-edit { background: rgba(212, 175, 55, 0.15); color: var(--gold-light); border: 1px solid var(--gold-border); padding: 5px 9px; font-size: 0.8rem; border-radius: 5px; cursor: pointer; }
+        .btn-action-edit { background: var(--card-inner); color: var(--gold-light); border: 1px solid var(--gold-border); padding: 5px 9px; font-size: 0.8rem; border-radius: 5px; cursor: pointer; font-weight: 700; }
         .btn-action-edit:hover { background: var(--gold-primary); color: #000; }
-        .btn-action-del { background: var(--ruby-bg); color: var(--ruby); border: 1px solid rgba(244, 63, 94, 0.3); padding: 5px 9px; font-size: 0.8rem; border-radius: 5px; cursor: pointer; }
+        .btn-action-del { background: var(--ruby-bg); color: var(--ruby); border: 1px solid var(--ruby); padding: 5px 9px; font-size: 0.8rem; border-radius: 5px; cursor: pointer; font-weight: 700; }
         .btn-action-del:hover { background: var(--ruby); color: #fff; }
 
         /* البطاقات */
@@ -122,14 +163,14 @@
             border-radius: 12px;
             padding: 14px 16px;
             backdrop-filter: blur(12px);
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.45);
+            box-shadow: var(--shadow-card);
             transition: all 0.3s ease;
         }
-        .luxury-card:hover { border-color: rgba(212, 175, 55, 0.6); }
+        .luxury-card:hover { border-color: var(--gold-primary); }
         .luxury-card label { display: block; font-size: 0.8rem; font-weight: 600; color: var(--cream-muted); margin-bottom: 6px; }
         .luxury-card input[type="number"], .luxury-card input[type="text"], .luxury-card select {
             width: 100%;
-            background: rgba(6, 10, 18, 0.7);
+            background: var(--input-bg);
             border: 1px solid var(--border-soft);
             color: var(--gold-light);
             font-family: 'Readex Pro', sans-serif;
@@ -154,8 +195,8 @@
             position: relative;
             overflow: hidden;
             backdrop-filter: blur(12px);
-            box-shadow: 0 8px 24px rgba(0,0,0,0.4);
-            border-right: 3.5px solid var(--gold-primary);
+            box-shadow: var(--shadow-card);
+            border-right: 4px solid var(--gold-primary);
             transition: all 0.3s ease;
         }
         .metric-card.profit { border-right-color: var(--emerald); }
@@ -166,26 +207,26 @@
         .metric-card h3 { margin: 0 0 6px 0; font-size: 0.8rem; color: var(--cream-muted); font-weight: 500; }
         .metric-card p { margin: 0; font-family: 'Readex Pro', sans-serif; font-size: 1.35rem; font-weight: 700; color: var(--cream-text); letter-spacing: -0.5px; }
 
-        /* التلوين العام للربح والخسارة لجميع العناصر */
+        /* تلوين الربح والخسارة */
         .badge-profit, strong.badge-profit, span.badge-profit, p.badge-profit, td.badge-profit {
             color: var(--emerald) !important;
-            text-shadow: 0 0 12px rgba(16, 185, 129, 0.45) !important;
+            text-shadow: 0 0 12px rgba(16, 185, 129, 0.3) !important;
             font-weight: 700 !important;
         }
         .badge-loss, strong.badge-loss, span.badge-loss, p.badge-loss, td.badge-loss {
             color: var(--ruby) !important;
-            text-shadow: 0 0 12px rgba(244, 63, 94, 0.45) !important;
+            text-shadow: 0 0 12px rgba(244, 63, 94, 0.3) !important;
             font-weight: 700 !important;
         }
 
-        /* الصناديق والأقسام */
+        /* الصناديق */
         .section-box {
             background: var(--card-bg);
             border: 1px solid var(--border-soft);
             border-radius: 14px;
             padding: 22px;
             margin-bottom: 28px;
-            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4);
+            box-shadow: var(--shadow-card);
             backdrop-filter: blur(12px);
         }
         .section-header {
@@ -203,30 +244,20 @@
         /* شبكة الأدوات */
         .tools-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 20px; }
         .tool-card {
-            background: rgba(8, 14, 28, 0.85);
+            background: var(--card-inner);
             border: 1px solid var(--gold-border);
             border-radius: 12px;
             padding: 18px;
             position: relative;
+            box-shadow: var(--shadow-card);
         }
         .tool-card h4 { margin: 0 0 14px 0; color: var(--gold-light); font-size: 1rem; display: flex; align-items: center; gap: 8px; border-bottom: 1px solid var(--border-soft); padding-bottom: 8px; }
 
-        /* حقول الأدوات المنسقة */
-        .input-group-custom {
-            display: flex;
-            flex-direction: column;
-            gap: 5px;
-            margin-bottom: 12px;
-        }
-        .input-group-custom label {
-            font-size: 0.8rem;
-            color: var(--cream-muted);
-            font-weight: 600;
-            text-align: right;
-        }
+        .input-group-custom { display: flex; flex-direction: column; gap: 5px; margin-bottom: 12px; }
+        .input-group-custom label { font-size: 0.8rem; color: var(--cream-muted); font-weight: 600; text-align: right; }
         .input-group-custom input {
             width: 100%;
-            background: rgba(6, 10, 18, 0.85);
+            background: var(--input-bg);
             border: 1px solid var(--border-soft);
             color: var(--gold-light);
             font-family: 'Readex Pro', sans-serif;
@@ -237,38 +268,34 @@
             text-align: right;
             box-sizing: border-box;
         }
-        .input-group-custom input:focus {
-            outline: none;
-            border-color: var(--gold-primary);
-            box-shadow: 0 0 8px rgba(212, 175, 55, 0.3);
-        }
+        .input-group-custom input:focus { outline: none; border-color: var(--gold-primary); box-shadow: 0 0 8px rgba(212, 175, 55, 0.3); }
 
         /* الجداول */
         .table-responsive { width: 100%; overflow-x: auto; border-radius: 8px; }
         table { width: 100%; border-collapse: separate; border-spacing: 0 4px; min-width: 980px; }
-        th { background: rgba(18, 28, 51, 0.85); color: var(--cream-muted); font-weight: 700; font-size: 0.85rem; padding: 12px 10px; text-align: center; border: none; }
+        th { background: var(--table-th-bg); color: var(--cream-muted); font-weight: 700; font-size: 0.85rem; padding: 12px 10px; text-align: center; border: none; }
         th:first-child { border-radius: 8px 0 0 8px; }
         th:last-child { border-radius: 0 8px 8px 0; }
         td { padding: 12px 10px; text-align: center; font-family: 'Readex Pro', sans-serif; font-size: 0.88rem; border: none; color: var(--cream-text); }
-        tbody tr { transition: all 0.2s ease; box-shadow: 0 2px 8px rgba(0,0,0,0.2); }
-        tbody tr:hover { filter: brightness(1.15); transform: scale(1.002); }
+        tbody tr { transition: all 0.2s ease; box-shadow: 0 2px 8px rgba(0,0,0,0.06); }
+        tbody tr:hover { filter: brightness(1.08); transform: scale(1.002); }
 
-        .table-input { width: 60px; background: rgba(6, 10, 18, 0.8); border: 1px solid var(--border-soft); color: var(--gold-light); font-family: 'Readex Pro', sans-serif; padding: 4px; border-radius: 5px; text-align: center; font-size: 0.85rem; font-weight: 700; }
+        .table-input { width: 60px; background: var(--input-bg); border: 1px solid var(--border-soft); color: var(--gold-light); font-family: 'Readex Pro', sans-serif; padding: 4px; border-radius: 5px; text-align: center; font-size: 0.85rem; font-weight: 700; }
         .table-input:focus { outline: none; border-color: var(--gold-primary); }
-        .bank-badge { padding: 4px 10px; border-radius: 6px; font-family: 'Tajawal', sans-serif; font-weight: 700; font-size: 0.8rem; display: inline-block; box-shadow: 0 2px 8px rgba(0,0,0,0.3); }
+        .bank-badge { padding: 4px 10px; border-radius: 6px; font-family: 'Tajawal', sans-serif; font-weight: 700; font-size: 0.8rem; display: inline-block; box-shadow: 0 2px 8px rgba(0,0,0,0.15); }
 
         /* Modals */
-        .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(4, 7, 13, 0.85); backdrop-filter: blur(8px); justify-content: center; align-items: center; z-index: 1000; }
-        .modal-content { background: #0E1629; border: 1px solid var(--gold-border); padding: 25px; border-radius: 14px; width: 92%; max-width: 460px; box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8); animation: modalFadeIn 0.3s ease; }
+        .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: var(--modal-backdrop); backdrop-filter: blur(8px); justify-content: center; align-items: center; z-index: 1000; }
+        .modal-content { background: var(--modal-bg); border: 1px solid var(--gold-border); padding: 25px; border-radius: 14px; width: 92%; max-width: 460px; box-shadow: var(--shadow-card); animation: modalFadeIn 0.3s ease; }
         @keyframes modalFadeIn { from { opacity: 0; transform: translateY(-15px); } to { opacity: 1; transform: translateY(0); } }
         .modal-content h3 { margin-top: 0; font-size: 1.25rem; color: var(--gold-light); border-bottom: 1px solid var(--border-soft); padding-bottom: 10px; }
         .form-group { margin-bottom: 14px; }
         .form-group label { display: block; margin-bottom: 5px; color: var(--cream-muted); font-size: 0.85rem; }
-        .form-group input, .form-group select { width: 100%; padding: 9px 12px; background: #060A12; border: 1px solid var(--border-soft); color: var(--cream-text); font-family: 'Readex Pro', sans-serif; border-radius: 6px; }
+        .form-group input, .form-group select { width: 100%; padding: 9px 12px; background: var(--input-bg); border: 1px solid var(--border-soft); color: var(--cream-text); font-family: 'Readex Pro', sans-serif; border-radius: 6px; }
         .form-group input:focus, .form-group select:focus { outline: none; border-color: var(--gold-primary); box-shadow: 0 0 8px rgba(212, 175, 55, 0.3); }
         .modal-actions { display: flex; justify-content: flex-end; gap: 10px; margin-top: 20px; }
 
-        .toast { position: fixed; bottom: 24px; right: 24px; background: linear-gradient(135deg, #10B981, #065F46); color: #fff; padding: 12px 22px; border-radius: 8px; font-weight: 700; display: none; z-index: 2000; box-shadow: 0 8px 25px rgba(0,0,0,0.6); border: 1px solid rgba(255,255,255,0.2); font-family: 'Tajawal', sans-serif; }
+        .toast { position: fixed; bottom: 24px; right: 24px; background: linear-gradient(135deg, #10B981, #065F46); color: #fff; padding: 12px 22px; border-radius: 8px; font-weight: 700; display: none; z-index: 2000; box-shadow: 0 8px 25px rgba(0,0,0,0.3); border: 1px solid rgba(255,255,255,0.2); font-family: 'Tajawal', sans-serif; }
     </style>
 </head>
 <body>
@@ -284,6 +311,7 @@
             </div>
         </div>
         <div class="actions-group">
+            <button class="btn btn-theme" id="themeToggleBtn" onclick="toggleTheme()">☀️ المظهر الفاتح</button>
             <div class="live-badge" id="liveStatus">🟢 بث مباشر (تحديث تلقائي: نشط)</div>
             <button class="btn btn-gold" onclick="fetchLivePrice(true)">تحديث السعر الفوري 🔄</button>
             <button class="btn btn-emerald" onclick="manualSave()">حفظ التغييرات 💾</button>
@@ -461,7 +489,7 @@
                     </div>
                     <div class="input-group-custom" style="margin-bottom:0;">
                         <label>الشرط</label>
-                        <select id="alertCondition" style="width:100%; padding:9px 8px; background:#060A12; border:1px solid var(--border-soft); color:#fff; border-radius:6px; font-family:'Tajawal'; font-weight:700;">
+                        <select id="alertCondition" style="width:100%; padding:9px 8px; background:var(--input-bg); border:1px solid var(--border-soft); color:var(--cream-text); border-radius:6px; font-family:'Tajawal'; font-weight:700;">
                             <option value="gte">عند الوصول أو أعلى ( $\ge$ )</option>
                             <option value="lte">عند الهبوط أو أدنى ( $\le$ )</option>
                         </select>
@@ -486,7 +514,7 @@
                         <button class="btn btn-glass" onclick="document.getElementById('simTargetOunce').value=5000; runProfitSimulation();">$5,000</button>
                     </div>
                 </div>
-                <div style="background:rgba(6,10,18,0.7); border:1px solid var(--border-soft); border-radius:8px; padding:12px;">
+                <div style="background:var(--card-inner); border:1px solid var(--border-soft); border-radius:8px; padding:12px;">
                     <div style="display:flex; justify-content:space-between; margin-bottom:6px; font-size:0.85rem;">
                         <span style="color:var(--cream-muted)">القيمة الصافية المتوقعة:</span>
                         <strong id="simNetVal" style="color:var(--gold-light);">0.00 ر.س</strong>
@@ -520,7 +548,7 @@
                     </div>
                 </div>
 
-                <div style="background:rgba(6,10,18,0.7); border:1px solid var(--border-soft); border-radius:8px; padding:12px;">
+                <div style="background:var(--card-inner); border:1px solid var(--border-soft); border-radius:8px; padding:12px;">
                     <div style="display:flex; justify-content:space-between; margin-bottom:5px; font-size:0.82rem;">
                         <span style="color:var(--cream-muted)">سعر شراء الجرام الجديد:</span>
                         <strong id="dcaGramPriceResult" style="color:var(--cream-text);">0.00 ر.س/جم</strong>
@@ -543,7 +571,7 @@
             <!-- أداة 4: حاسبة زكاة الذهب الذكية -->
             <div class="tool-card">
                 <h4>🕋 حاسبة زكاة الذهب التلقائية</h4>
-                <div style="background:rgba(6,10,18,0.7); border:1px solid var(--border-soft); border-radius:8px; padding:12px; margin-bottom:8px;">
+                <div style="background:var(--card-inner); border:1px solid var(--border-soft); border-radius:8px; padding:12px; margin-bottom:8px;">
                     <div style="display:flex; justify-content:space-between; margin-bottom:6px; font-size:0.85rem;">
                         <span style="color:var(--cream-muted)">حالة النصاب الشرعي (85 جم):</span>
                         <strong id="zakatStatus" style="color:var(--gold-light);">---</strong>
@@ -601,7 +629,7 @@
     <div class="modal-content">
         <h3 style="color:var(--emerald);">💰 تأكيد تنفيذ بيع الصفقة</h3>
         <input type="hidden" id="sellDealIndex">
-        <div class="luxury-card" style="margin-bottom: 14px; background:#060A12;">
+        <div class="luxury-card" style="margin-bottom: 14px;">
             <p style="margin: 4px 0; font-size:0.9rem;" id="sellModalInfo"></p>
         </div>
         <div class="form-group">
@@ -691,6 +719,23 @@
         } catch(e){}
     }
 
+    /* === وظائف تغيير الثيم === */
+    function toggleTheme() {
+        const currentTheme = document.documentElement.getAttribute('data-theme') || 'dark';
+        const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+        applyTheme(newTheme);
+        autoSave();
+    }
+
+    function applyTheme(theme) {
+        document.documentElement.setAttribute('data-theme', theme);
+        const btn = document.getElementById('themeToggleBtn');
+        if (btn) {
+            btn.innerHTML = theme === 'light' ? '🌙 المظهر الداكن' : '☀️ المظهر الفاتح';
+        }
+        calculateAll();
+    }
+
     const defaultActiveDeals = [
         { bank: "الراجحي", weight: 20, buyTotal: 11969, spread: 2.0 },
         { bank: "الأهلي",  weight: 20, buyTotal: 11818, spread: 2.0 },
@@ -705,6 +750,7 @@
     let closedDeals = JSON.parse(localStorage.getItem('gold_closed_deals')) || defaultClosedDeals;
     let priceAlerts = JSON.parse(localStorage.getItem('gold_alerts')) || [];
     
+    // استعادة الإعدادات والثيم
     const savedSettings = JSON.parse(localStorage.getItem('gold_settings'));
     if (savedSettings) {
         document.getElementById('ouncePrice').value = savedSettings.ouncePrice ?? 4455.02;
@@ -713,6 +759,9 @@
         document.getElementById('spreadAhli').value = savedSettings.spreadAhli ?? 2.0;
         document.getElementById('colorRajhi').value = savedSettings.colorRajhi ?? '#1A365D';
         document.getElementById('colorAhli').value = savedSettings.colorAhli ?? '#064E3B';
+        if (savedSettings.theme) {
+            applyTheme(savedSettings.theme);
+        }
     }
 
     function autoSave() {
@@ -721,6 +770,7 @@
         localStorage.setItem('gold_alerts', JSON.stringify(priceAlerts));
         
         const settings = {
+            theme: document.documentElement.getAttribute('data-theme') || 'dark',
             ouncePrice: parseFloat(document.getElementById('ouncePrice').value),
             usdSar: parseFloat(document.getElementById('usdToSar').value),
             spreadRajhi: parseFloat(document.getElementById('spreadRajhi').value),
@@ -791,6 +841,7 @@
     }
 
     function calculateAll() {
+        const isLight = document.documentElement.getAttribute('data-theme') === 'light';
         const ounceUSD = parseFloat(document.getElementById('ouncePrice').value) || 0;
         const usdSar = parseFloat(document.getElementById('usdToSar').value) || 3.75;
         const defaultSpreadR = parseFloat(document.getElementById('spreadRajhi').value) || 0;
@@ -833,14 +884,14 @@
             }
 
             const bankColor = deal.bank === "الراجحي" ? colorRajhi : colorAhli;
-            const rowBg = hexToRgba(bankColor, 0.28);
+            const rowBg = hexToRgba(bankColor, isLight ? 0.08 : 0.28);
             const pnlClass = pnlSAR >= 0 ? 'badge-profit' : 'badge-loss';
 
             activeHtml += `
                 <tr style="background: ${rowBg}; border-right: 4px solid ${bankColor};">
                     <td>${idx + 1}</td>
                     <td><span class="bank-badge" style="background: ${bankColor}; color: #fff; border: 1px solid rgba(255,255,255,0.2);">${deal.bank}</span></td>
-                    <td><strong style="color:var(--cream-text);">${fmt(deal.weight, 2)}</strong></td>
+                    <td><strong>${fmt(deal.weight, 2)}</strong></td>
                     <td><strong>${fmt(deal.buyTotal, 2)}</strong> <span style="font-size:0.75rem; color:var(--cream-muted)">ر.س</span></td>
                     <td>${fmt(buyPricePerGram, 2)}</td>
                     <td>
@@ -872,7 +923,7 @@
             const bColor = bankStats[b].color;
 
             bankHtml += `
-                <tr style="background: ${hexToRgba(bColor, 0.3)}; border-right: 4px solid ${bColor};">
+                <tr style="background: ${hexToRgba(bColor, isLight ? 0.1 : 0.3)}; border-right: 4px solid ${bColor};">
                     <td><span class="bank-badge" style="background: ${bColor}; color: #fff;">${b}</span></td>
                     <td><strong>${fmt(bankStats[b].weight, 2)} جم</strong></td>
                     <td>${fmt(bInvest, 2)} ر.س</td>
@@ -900,7 +951,7 @@
             const pClass = pnl >= 0 ? 'badge-profit' : 'badge-loss';
 
             closedHtml += `
-                <tr style="background: ${hexToRgba(bankColor, 0.16)}; border-right: 4px solid ${bankColor};">
+                <tr style="background: ${hexToRgba(bankColor, isLight ? 0.06 : 0.16)}; border-right: 4px solid ${bankColor};">
                     <td>${idx + 1}</td>
                     <td><span class="bank-badge" style="background: ${bankColor}; color: #fff;">${deal.bank}</span></td>
                     <td>${fmt(deal.weight, 2)}</td>
@@ -1009,10 +1060,10 @@
         let html = "";
         priceAlerts.forEach(a => {
             const condSymbol = a.condition === 'gte' ? '≥' : '≤';
-            const statusBg = a.triggered ? 'rgba(244,63,94,0.2)' : 'rgba(16,185,129,0.2)';
+            const statusBg = a.triggered ? 'var(--ruby-bg)' : 'var(--emerald-bg)';
             const statusText = a.triggered ? '<span style="color:var(--ruby); font-weight:bold;">تم التنبيه 🔔</span>' : '<span style="color:var(--emerald);">نشط ⏳</span>';
             html += `
-                <div style="display:flex; justify-content:space-between; align-items:center; background:${statusBg}; padding:6px 10px; border-radius:6px; margin-bottom:5px; font-size:0.8rem;">
+                <div style="display:flex; justify-content:space-between; align-items:center; background:${statusBg}; padding:6px 10px; border-radius:6px; margin-bottom:5px; font-size:0.8rem; border:1px solid var(--border-soft);">
                     <div>
                         <strong>${condSymbol} $${fmt(a.target, 2)}</strong> <span style="font-size:0.75rem; color:var(--cream-muted)">(${a.note})</span>
                         <div>${statusText}</div>
@@ -1024,7 +1075,7 @@
         container.innerHTML = html;
     }
 
-    // 2. محاكي سيناريوهات الأرباح وتطبيق ألوان الربح والخسارة عليها
+    // 2. محاكي سيناريوهات الأرباح
     function runProfitSimulation() {
         const simOunce = parseFloat(document.getElementById('simTargetOunce').value) || 0;
         const usdSar = parseFloat(document.getElementById('usdToSar').value) || 3.75;
@@ -1056,7 +1107,6 @@
 
         document.getElementById('simNetVal').innerText = fmt(simNetTotal, 2) + " ر.س";
         
-        // تطبيق الألوان بدقة
         const simPnLElem = document.getElementById('simNetPnL');
         simPnLElem.innerText = `${simPnL > 0 ? '+' : ''}${fmt(simPnL, 2)} ر.س (${fmt(simPnLPct, 2)}%)`;
         simPnLElem.className = simPnL >= 0 ? 'badge-profit' : 'badge-loss';
@@ -1263,6 +1313,7 @@
             closedDeals,
             priceAlerts,
             settings: {
+                theme: document.documentElement.getAttribute('data-theme') || 'dark',
                 ouncePrice: parseFloat(document.getElementById('ouncePrice').value),
                 usdSar: parseFloat(document.getElementById('usdToSar').value),
                 spreadRajhi: parseFloat(document.getElementById('spreadRajhi').value),
@@ -1300,6 +1351,9 @@
                     document.getElementById('spreadAhli').value = data.settings.spreadAhli ?? 2.0;
                     document.getElementById('colorRajhi').value = data.settings.colorRajhi ?? '#1A365D';
                     document.getElementById('colorAhli').value = data.settings.colorAhli ?? '#064E3B';
+                    if (data.settings.theme) {
+                        applyTheme(data.settings.theme);
+                    }
                 }
                 calculateAll();
                 showToast("تم استيراد المحفظة والتنبيهات بنجاح تام! 📥");
